@@ -56,11 +56,11 @@ const Application = React.createClass({
         var plannerUrl = "http://54.206.123.83:10080/?module=planner&fromPlace="
             + element.item_location_geocode.latitude + "%2C" + element.item_location_geocode.longitude + "&toPlace="
             + element.delivery_location_geocode.latitude + "%2C" + element.delivery_location_geocode.longitude
-            + "&time=9%3A19am&date=10-09-2016&mode=TRANSIT%2CWALK&maxWalkDistance=804.672&arriveBy=true&wheelchair=false&locale=en&startTransitStopId=4_19842&itinIndex=0";
+            + "&mode=TRANSIT%2CWALK&itinIndex=1";
         var courierToItemUrl = "http://54.206.123.83:10080/?module=planner&fromPlace="
             + that.state.courier.home_geocode.latitude + "%2C" + that.state.courier.home_geocode.longitude + "&toPlace="
             + element.item_location_geocode.latitude + "%2C" + element.item_location_geocode.longitude
-            + "&time=9%3A19am&date=10-09-2016&mode=TRANSIT%2CWALK&maxWalkDistance=804.672&arriveBy=true&wheelchair=false&locale=en&startTransitStopId=4_19842&itinIndex=0";
+            + "&mode=TRANSIT%2CWALK&itinIndex=1";
       return (
         <div className="row" key={element.id}>
             <div className="col-md-6">
