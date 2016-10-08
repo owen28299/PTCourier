@@ -59,9 +59,9 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Header = __webpack_require__(222),
-	    GetAll = __webpack_require__(223),
-	    Get = __webpack_require__(224),
-	    Add = __webpack_require__(225),
+	    Home = __webpack_require__(228),
+	    Client = __webpack_require__(229),
+	    Courier = __webpack_require__(230),
 	    NotFound = __webpack_require__(227);
 	
 	_reactDom2.default.render(_react2.default.createElement(
@@ -70,9 +70,9 @@
 	  _react2.default.createElement(
 	    _reactRouter.Route,
 	    { path: '/', component: Header },
-	    _react2.default.createElement(_reactRouter.IndexRoute, { component: GetAll }),
-	    _react2.default.createElement(_reactRouter.Route, { path: 'get', component: Get }),
-	    _react2.default.createElement(_reactRouter.Route, { path: 'add', component: Add }),
+	    _react2.default.createElement(_reactRouter.IndexRoute, { component: Home }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'courier', component: Courier }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'client', component: Client }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '*', component: NotFound })
 	  )
 	), document.getElementById('content'));
@@ -25774,13 +25774,13 @@
 	      ),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/get' },
-	        'GET'
+	        { to: '/courier' },
+	        'For Couriers'
 	      ),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/add' },
-	        'ADD'
+	        { to: '/client' },
+	        'For Clients'
 	      ),
 	      this.props.children
 	    );
@@ -25790,102 +25790,9 @@
 	module.exports = Header;
 
 /***/ },
-/* 223 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(159);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var GetAll = _react2.default.createClass({
-	  displayName: 'GetAll',
-	
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'all-jobs' },
-	      _react2.default.createElement(
-	        'h1',
-	        null,
-	        'All Jobs'
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = GetAll;
-
-/***/ },
-/* 224 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(159);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Get = _react2.default.createClass({
-	  displayName: 'Get',
-	
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'get' },
-	      _react2.default.createElement(
-	        'h1',
-	        null,
-	        'GET'
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = Get;
-
-/***/ },
-/* 225 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(159);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Add = _react2.default.createClass({
-	  displayName: 'Add',
-	
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'add' },
-	      _react2.default.createElement(
-	        'h1',
-	        null,
-	        'Add'
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = Add;
-
-/***/ },
+/* 223 */,
+/* 224 */,
+/* 225 */,
 /* 226 */,
 /* 227 */
 /***/ function(module, exports, __webpack_require__) {
@@ -25915,6 +25822,117 @@
 	});
 	
 	module.exports = NotFound;
+
+/***/ },
+/* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(159);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var GetAll = _react2.default.createClass({
+	  displayName: 'GetAll',
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'all-jobs' },
+	      _react2.default.createElement(
+	        'h1',
+	        null,
+	        'Welcome to PT Courier'
+	      ),
+	      _react2.default.createElement(
+	        'p',
+	        null,
+	        'Urgent messenger and courier services at your fingertips'
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = GetAll;
+
+/***/ },
+/* 229 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(159);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Get = _react2.default.createClass({
+	  displayName: 'Get',
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'get' },
+	      _react2.default.createElement(
+	        'h1',
+	        null,
+	        'Client'
+	      ),
+	      _react2.default.createElement(
+	        'p',
+	        null,
+	        'Instant delivery at your fingertips'
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Get;
+
+/***/ },
+/* 230 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(159);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Add = _react2.default.createClass({
+	  displayName: 'Add',
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'add' },
+	      _react2.default.createElement(
+	        'h1',
+	        null,
+	        'For Couriers'
+	      ),
+	      _react2.default.createElement(
+	        'p',
+	        null,
+	        'Find, travel, earn'
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Add;
 
 /***/ }
 /******/ ]);
