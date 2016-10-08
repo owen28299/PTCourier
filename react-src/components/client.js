@@ -3,6 +3,7 @@ import { browserHistory, Link } from 'react-router';
 
 const PostJob = require('./postjob');
 const DashBoard = require('./clientdashboard');
+const JobView = require('./clientjobview');
 
 const Get = React.createClass({
   getInitialState : function(){
@@ -24,7 +25,11 @@ const Get = React.createClass({
         break;
 
       case "dashboard":
-        view = <DashBoard />
+        view = <DashBoard setView={this.setView}/>
+        break;
+
+      case "jobview":
+        view = <JobView />
         break;
 
       default:
@@ -36,6 +41,7 @@ const Get = React.createClass({
         <div className="couriernav">
           <a onClick={this.setView.bind(this,"dashboard")}>View DashBoard</a>
           <a onClick={this.setView.bind(this,"postjob")}>Post Job</a>
+          <a onClick={this.setView.bind(this,"jobview")}>Jobs in Progress</a>
         </div>
         {view}
       </div>
