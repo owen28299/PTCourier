@@ -18,9 +18,9 @@ ReactDOM.render(
     <Route path="/" component={Header}>
       <IndexRoute component={Home}></IndexRoute>
       <Route path="courier" component={Courier}></Route>
+      <Route path="courier/apply/:id" component={Apply}></Route>
       <Route path="client" component={Client}></Route>
       <Route path="clientdash" component={DashboardClient}></Route>
-      <Route path="apply/:id" component={Apply}></Route>
       <Route path="*" component={NotFound}></Route>
     </Route>
   </Router>,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 
 const Application = React.createClass({
   getInitialState : function(){
@@ -56,7 +56,9 @@ const Application = React.createClass({
 
     return (
       <div className="courier-application">
-        <h1>Apply to job</h1>
+        <h1>Welcome, Jimmy!</h1>
+        <Link to="/courier">Back to Jobs</Link>
+        <h2>Apply to job</h2>
         {jobdetails}
         <h1>~~~Show Map with options here~~~</h1>
         <p>Proposed Delivery Time (hours)</p>
