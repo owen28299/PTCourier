@@ -13,6 +13,17 @@ router.route('/')
         data : jobs
       });
     });
-  });
+  })
+  .post(function(req,res) {
+    JobFunctions.addJob(req.body.name, req.body.item, req.body.location, req.body.budget, req.body.time);
+
+    JobFunctions.getAll(function(jobs){
+      res.send({
+        success : true,
+        data : jobs
+      });
+    });
+  })
+  ;
 
 module.exports = router;

@@ -11,6 +11,7 @@ const Header = React.createClass({
         <Link to="/">Home</Link>
         <Link to="/courier">For Couriers</Link>
         <Link to="/client">For Clients</Link>
+        <Link to="/clientdash">Client Dashboard</Link>
         {this.props.children}
       </div>
     )
