@@ -139,7 +139,6 @@ const CourierPayment = React.createClass({
                     onChange={this.handleChange.bind(this, "securityCode")}
                 />
                 <div className="container"></div>
-                <button id="payButton" onClick={this.pay}>Pay Now</button>
             </div>
         )
     }
