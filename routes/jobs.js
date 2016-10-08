@@ -24,6 +24,35 @@ router.route('/')
       });
     });
   })
-  ;
+  .put(function(req,res){
+    JobFunctions.applyToJob(req.body.id, req.body.name, req.body.time, req.body.offer);
+
+    res.send({
+      success : true,
+     });
+  });
+
+router.route('/:id')
+  .get(function(req,res){
+    JobFunctions.getJob(req.params.id, function(job){
+      res.send({
+        success : true,
+        data : job
+      });
+    });
+  });
+
+router.route('/accept')
+  .post(function(req,res){
+    JobFunctions.acceptApplicant(req.body.jobid, req.body.appid);
+
+    JobFunctions.getAll(function(jobs){
+      res.send({
+        success : true,
+        data : jobs
+      });
+    });
+
+  });
 
 module.exports = router;

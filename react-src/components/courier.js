@@ -7,6 +7,9 @@ const Add = React.createClass({
       jobs : []
     }
   },
+  apply : function(event){
+    browserHistory.push("/apply/" + event.target.id)
+  },
   componentDidMount : function(){
     var that = this;
 
@@ -19,18 +22,23 @@ const Add = React.createClass({
     xhttp.send();
   },
   render : function(){
+    var that = this;
+
     var allJobs = this.state.jobs.map(function(element){
-      return (
-        <div key={element.id}>
-          <p>{element.client}</p>
-          <p>{element.item}</p>
-          <p>{element.item_location}</p>
-          <p>{element.delivery_location}</p>
-          <p>{element.time}</p>
-          <p>{element.budget}</p>
-          <button>Apply</button>
-        </div>
-      )
+      if(element.status === "hiring"){
+        return (
+          <div key={element.id}>
+            <p>{element.client}</p>
+            <p>{element.item}</p>
+            <p>{element.item_location}</p>
+            <p>{element.delivery_location}</p>
+            <p>{element.time}</p>
+            <p>{element.budget}</p>
+            <button id={element.id} onClick={that.apply}>Apply</button>
+          </div>
+        )
+      }
+
     });
 
     return (
