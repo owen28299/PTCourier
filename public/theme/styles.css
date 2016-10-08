@@ -1060,7 +1060,7 @@ body {
   font-size: 14px;
   line-height: 1.42857;
   color: #333333;
-  background-color: #FFAA18; }
+  background-color: #484848; }
 
 input,
 button,
@@ -1097,7 +1097,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.42857;
-  background-color: #FFAA18;
+  background-color: #484848;
   border: 1px solid #ddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -2058,7 +2058,7 @@ th {
   .table > tbody + tbody {
     border-top: 2px solid #ddd; }
   .table .table {
-    background-color: #FFAA18; }
+    background-color: #484848; }
 
 .table-condensed > thead > tr > th,
 .table-condensed > thead > tr > td,
@@ -3623,7 +3623,7 @@ tbody.collapse.in {
         border-color: #eeeeee #eeeeee #ddd; }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
       color: #555555;
-      background-color: #FFAA18;
+      background-color: #484848;
       border: 1px solid #ddd;
       border-bottom-color: transparent;
       cursor: default; }
@@ -3677,7 +3677,7 @@ tbody.collapse.in {
     .nav-tabs-justified > .active > a, .nav-tabs.nav-justified > .active > a,
     .nav-tabs-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:hover,
     .nav-tabs-justified > .active > a:focus, .nav-tabs.nav-justified > .active > a:focus {
-      border-bottom-color: #FFAA18; } }
+      border-bottom-color: #484848; } }
 
 .tab-content > .tab-pane {
   display: none; }
@@ -4359,7 +4359,7 @@ a.badge:hover, a.badge:focus {
   padding: 4px;
   margin-bottom: 20px;
   line-height: 1.42857;
-  background-color: #FFAA18;
+  background-color: #484848;
   border: 1px solid #ddd;
   border-radius: 4px;
   -webkit-transition: border 0.2s ease-in-out;
@@ -5855,7 +5855,7 @@ button.close {
     display: none !important; } }
 
 *:focus {
-  outline: none; }
+  outline: none !important; }
 
 a {
   cursor: pointer; }
@@ -5882,6 +5882,9 @@ hr.brand {
   .subnav h5 {
     text-align: left;
     margin: 0; }
+  .subnav ul li {
+    display: inline-block;
+    list-style: none; }
   .subnav a {
     text-align: right;
     display: inline;
@@ -5941,6 +5944,7 @@ h3.sub-heading {
   background-color: white;
   border-top: 2px solid #333333;
   padding: 10px;
+  margin-bottom: 20px;
   -webkit-box-shadow: -1px 1px 1px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: -1px 1px 1px 0px rgba(0, 0, 0, 0.3);
   box-shadow: -1px 1px 1px 0px rgba(0, 0, 0, 0.3); }
@@ -5979,6 +5983,10 @@ textarea {
   padding: 10px;
   display: block;
   margin-bottom: 10px; }
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none !important; }
 
 label {
   color: #707070;
@@ -5989,10 +5997,43 @@ table > tbody > tr > td {
 
 .map-iframe {
   height: 500px;
-  width: 100%; }
+  width: 100%;
+  background-color: #d5d5d5; }
 
 .padding-left {
   padding-left: 10px; }
+
+.bg-info {
+  background-color: #d5d5d5;
+  padding: 10px;
+  margin: 0; }
+
+.arrival-bar {
+  width: 100%; }
+  .arrival-bar .status {
+    width: 100%;
+    letter-spacing: 1px;
+    margin: 0 0 20px 0; }
+    .arrival-bar .status.on-time {
+      background-color: #538043;
+      color: white;
+      text-align: center;
+      padding: 10px; }
+    .arrival-bar .status.delayed {
+      background-color: #c63a16;
+      color: white;
+      text-align: center;
+      padding: 10px; }
+    .arrival-bar .status.completed {
+      background-color: #d5d5d5;
+      color: white;
+      text-align: center;
+      padding: 10px; }
+    .arrival-bar .status.hiring {
+      background-color: #FFAA18;
+      color: white;
+      text-align: center;
+      padding: 10px; }
 
 .home {
   text-align: center;
@@ -6013,7 +6054,27 @@ table > tbody > tr > td {
       width: 200px; }
 
 .map {
+  background-color: #d5d5d5;
   height: 300px;
   width: 100%;
   display: block;
   margin: 0 auto; }
+
+.overlap-map {
+  position: absolute;
+  background-color: #fff;
+  height: 53px;
+  margin-top: 0;
+  width: 98%;
+  padding-top: 20px; }
+
+@media (max-width: 991px) {
+  .overlap-map {
+    position: absolute;
+    background-color: #fff;
+    height: 31px;
+    margin-top: 20px;
+    width: 98%;
+    padding-top: 0; }
+  .map-iframe {
+    margin-top: 20px; } }
