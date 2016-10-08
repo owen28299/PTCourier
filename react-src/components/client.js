@@ -9,7 +9,8 @@ const Get = React.createClass({
       item_location : "",
       delivery_location : "",
       time : "",
-      budget : ""
+      budget : "",
+        item_location_geocode : null,
     }
   },
   handleChange : function(field, event){
@@ -20,6 +21,7 @@ const Get = React.createClass({
   },
   handleSubmit : function(){
     var that = this;
+      this.state.item_location_geocode = document.getElementById('item_location_geocode').value;
 
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
     xmlhttp.open("POST", "/jobs");
@@ -47,11 +49,14 @@ const Get = React.createClass({
           onChange={this.handleChange.bind(this, "item")}
         />
         <p>Item Location</p>
-        <input
+        <input id="item_location"
           type="text"
           value={this.state.item_location}
           onChange={this.handleChange.bind(this, "item_location")}
         />
+        <input id="geocode_item_location" type="button" value="Geocode" />
+        <div id="map"></div>
+          <input type="hidden" id="item_location_geocode" />
         <p>Delivery Location</p>
         <input
           type="text"
