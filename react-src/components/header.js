@@ -24,6 +24,9 @@ const Header = React.createClass({
         } else if (path.indexOf('/courier') != -1) {
             return (
                 <Nav pullRight>
+                    <LinkContainer to="/courierpayments">
+                        <NavItem eventKey={3}>Payment Details</NavItem>
+                    </LinkContainer>
                     <LinkContainer to="/">
                         <NavItem eventKey={1} >Log Out</NavItem>
                     </LinkContainer>

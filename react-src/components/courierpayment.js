@@ -1,11 +1,11 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 
-const Payment = React.createClass({
+const CourierPayment = React.createClass({
     getInitialState : function(){
 
         return {
-            number : "5123450000000008",
+            number : "5123450000000016",
             securityCode : "100",
             expiryMonth : "05",
             expiryYear : "17",
@@ -22,7 +22,6 @@ const Payment = React.createClass({
 
     },
     pay : function(){
-        console.log("Hey");
         PaymentSession.configure({
             fields: {
                 // ATTACH HOSTED FIELDS TO YOUR PAYMENT PAGE FOR A CREDIT CARD
@@ -114,41 +113,37 @@ const Payment = React.createClass({
     },
     render : function(){
         return (
-            <div className="paymentmodule view">
-                <div className="container">
-                    <h3 className="sub-heading">Please enter your payment details</h3>
-                    <div className="form">
-                        <label>Card Number:</label>
-                        <input
-                            type="text" id="card-number" readOnly="readOnly" value={this.state.number}
-                            onChange={this.handleChange.bind(this, "number")}
-                        />
-                        <div className="container"></div>
-                        <label>Expiry Month:</label>
-                        <input
-                            type="text" id="expiry-month" readOnly="readOnly" value={this.state.expiryMonth}
-                            onChange={this.handleChange.bind(this, "expiryMonth")}
-                        />
-                        <div className="container"></div>
-                        <label>Expiry Year:</label>
-                        <input
-                            type="text" id="expiry-year" readOnly="readOnly" value={this.state.expiryYear}
-                            onChange={this.handleChange.bind(this, "expiryYear")}
-                        />
-                        <div className="container"></div>
-                        <label>Security Code:</label>
-                        <input
-                            type="text" id="security-code" readOnly="readOnly" value={this.state.securityCode}
-                            onChange={this.handleChange.bind(this, "securityCode")}
-                        />
-                        <div className="container"></div>
-                        <button id="payButton" onClick={this.pay}>Pay Now</button>
-                    </div>
-                </div>
+            <div className="paymentmodule">
+                <div>Please enter your payment details:</div>
+                <label>Card Number:</label>
+                <input
+                    type="text" id="card-number" readOnly="readOnly" value={this.state.number}
+                    onChange={this.handleChange.bind(this, "number")}
+                />
+                <div className="container"></div>
+                <label>Expiry Month:</label>
+                <input
+                    type="text" id="expiry-month" readOnly="readOnly" value={this.state.expiryMonth}
+                    onChange={this.handleChange.bind(this, "expiryMonth")}
+                />
+                <div className="container"></div>
+                <label>Expiry Year:</label>
+                <input
+                    type="text" id="expiry-year" readOnly="readOnly" value={this.state.expiryYear}
+                    onChange={this.handleChange.bind(this, "expiryYear")}
+                />
+                <div className="container"></div>
+                <label>Security Code:</label>
+                <input
+                    type="text" id="security-code" readOnly="readOnly" value={this.state.securityCode}
+                    onChange={this.handleChange.bind(this, "securityCode")}
+                />
+                <div className="container"></div>
+                <button id="payButton" onClick={this.pay}>Pay Now</button>
             </div>
         )
     }
 
 });
 
-module.exports = Payment;
+module.exports = CourierPayment;

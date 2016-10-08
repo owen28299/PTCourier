@@ -11,7 +11,8 @@ const Header      = require('./components/header'),
       Courier     = require('./components/courier'),
       NotFound    = require('./components/404'),
       Apply       = require('./components/apply'),
-      Payment = require("./components/payment");
+      Payment = require("./components/payment"),
+    CourierPayment = require("./components/courierpayment");
 
 ReactDOM.render(
   <Router history={browserHistory}>
@@ -21,7 +22,8 @@ ReactDOM.render(
       <Route path="courier/apply/:id" component={Apply}></Route>
       <Route path="client" component={Client}></Route>
       <Route path="clientdash" component={DashboardClient}></Route>
-      <Route path="client/payments" component={Payment}></Route>
+        <Route path="client/payments" component={Payment}></Route>
+      <Route path="courierpayments" component={CourierPayment}></Route>
       <Route path="*" component={NotFound}></Route>
     </Route>
   </Router>,
