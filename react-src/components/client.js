@@ -17,6 +17,16 @@ const Get = React.createClass({
 
     this.setState(nextState);
   },
+  handleSubmit : function(){
+    var that = this;
+
+    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+    xmlhttp.open("POST", "/jobs");
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlhttp.send(JSON.stringify(that.state));
+
+    browserHistory.push("/courier");
+  },
   render : function(){
     return (
       <div className="get">
@@ -49,7 +59,7 @@ const Get = React.createClass({
           onChange={this.handleChange.bind(this, "budget")}
         />
         <br />
-        <button>Submit</button>
+        <button onClick={this.handleSubmit}>Submit</button>
       </div>
     )
   }

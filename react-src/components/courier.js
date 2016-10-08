@@ -23,6 +23,8 @@ const Add = React.createClass({
       return (
         <div key={element.id}>
           <p>{element.name}</p>
+          <p>{element.item}</p>
+          <p>{element.address}</p>
           <p>{element.time}</p>
           <p>{element.budget}</p>
         </div>
