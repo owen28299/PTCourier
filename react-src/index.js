@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory, Link } from 'react-router';
 
+require('./theme/index.scss');
+
 const Header   = require('./components/header'),
       Home     = require('./components/home'),
       Client   = require('./components/client'),
