@@ -15,17 +15,33 @@ module.exports = {
       applicants : [
         {
           id : 0,
+          courierId : 0,
           name : "Tony Stark",
           offer : 50,
-          time : 2.5
+          time : 2.5,
+          offer_time_geocode : { latitude: -37.8256, longitude: 144.9051}
         },
         {
           id : 1,
+          courierId : 1,
           name : "Mickey Mouse",
           offer : 35,
-          time : 4
+          time : 4,
+          offer_time_geocode : { latitude: -37.8456, longitude: 144.9621}
         }
       ]
+    }
+  ],
+  couriers : [
+    {
+      id : 0,
+      name: "Tony Stark",
+      home_geocode : { latitude: -37.8256, longitude: 144.9051}
+    },
+    {
+      id : 1,
+      name: "Mickey Mouse",
+      home_geocode : { latitude: -37.8456, longitude: 144.9621}
     }
   ]
 };
