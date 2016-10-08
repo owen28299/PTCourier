@@ -24,6 +24,22 @@ router.route('/')
       });
     });
   })
-  ;
+  .put(function(req,res){
+    JobFunctions.applyToJob(req.body.id, req.body.name, req.body.time, req.body.offer);
+
+    res.send({
+      success : true,
+     });
+  });
+
+router.route('/:id')
+  .get(function(req,res){
+    JobFunctions.getJob(req.params.id, function(job){
+      res.send({
+        success : true,
+        data : job
+      });
+    });
+  });
 
 module.exports = router;

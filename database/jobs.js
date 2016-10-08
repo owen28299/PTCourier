@@ -8,6 +8,7 @@ module.exports = {
       delivery_location : "Melbourne Convention Centre",
       time : 3,
       budget : 50,
+      status : "hiring",
       applicants : [
         {
           id : 0,

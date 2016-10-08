@@ -7,6 +7,9 @@ const Add = React.createClass({
       jobs : []
     }
   },
+  apply : function(event){
+    browserHistory.push("/apply/" + event.target.id)
+  },
   componentDidMount : function(){
     var that = this;
 
@@ -19,6 +22,8 @@ const Add = React.createClass({
     xhttp.send();
   },
   render : function(){
+    var that = this;
+
     var allJobs = this.state.jobs.map(function(element){
       return (
         <div key={element.id}>
@@ -28,7 +33,7 @@ const Add = React.createClass({
           <p>{element.delivery_location}</p>
           <p>{element.time}</p>
           <p>{element.budget}</p>
-          <button>Apply</button>
+          <button id={element.id} onClick={that.apply}>Apply</button>
         </div>
       )
     });
