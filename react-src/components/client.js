@@ -49,9 +49,9 @@ const Get = React.createClass({
                     <h5>Welcome, Mark!</h5>
                 </div>
                 <div className="col-sm-6">
-                    <a onClick={this.setView.bind(this,"dashboard")}>View DashBoard</a>
-                    <a onClick={this.setView.bind(this,"postjob")}>Post Job</a>
+                    <a onClick={this.setView.bind(this,"dashboard")}>All Jobs</a>
                     <a onClick={this.setView.bind(this,"jobview")}>Jobs in Progress</a>
+                    <a onClick={this.setView.bind(this,"postjob")}>Post a Job</a>
                     <a onClick={this.setView.bind(this,"account")}>Your Account</a>
                 </div>
             </div>

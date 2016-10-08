@@ -1,5 +1,5 @@
 *:focus {
-  outline: none;
+  outline: none!important;
 }
 
 a {
@@ -33,6 +33,11 @@ hr.brand {
   h5 {
     text-align:left;
     margin:0;
+  }
+
+  ul li {
+    display: inline-block;
+    list-style: none;
   }
 
   a {
@@ -114,6 +119,7 @@ h3.sub-heading {
     background-color: white;
     border-top:2px solid #333333;
     padding:10px;
+    margin-bottom: 20px;
     -webkit-box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.3);
     -moz-box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.3);
     box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.3);
@@ -163,6 +169,9 @@ textarea {
   padding:10px;
   display:block;
   margin-bottom: 10px;
+  &:focus {
+    outline: none!important;
+  }
 }
 
 button {
@@ -184,8 +193,48 @@ table > tbody > tr > td {
 .map-iframe {
   height: 500px;
   width: 100%;
+  background-color: $lightGray;
 }
 
 .padding-left {
   padding-left: 10px;
+}
+
+.bg-info {
+  background-color: $lightGray;
+  padding:10px;
+  margin:0;
+}
+
+.arrival-bar {
+  width:100%;
+  .status {
+    width:100%;
+    letter-spacing: 1px;
+    margin:0 0 20px 0;
+    &.on-time {
+      background-color: #538043;
+      color: white;
+      text-align: center;
+      padding:10px;
+    }
+    &.delayed {
+      background-color: #c63a16;
+      color: white;
+      text-align: center;
+      padding:10px;
+    }
+    &.completed {
+      background-color: $lightGray;
+      color: white;
+      text-align: center;
+      padding:10px;
+    }
+    &.hiring {
+      background-color: $brand-primary;
+      color: white;
+      text-align: center;
+      padding:10px;
+    }
+  }
 }

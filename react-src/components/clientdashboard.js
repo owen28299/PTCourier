@@ -1,23 +1,56 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 const Payment = require('./payment');
-const Dashboard = React.createClass({
-  getInitialState : function(){
-    return {
-      jobs : []
-    }
-  },
-  componentDidMount : function(){
-    var that = this;
 
-    var xhttp = new XMLHttpRequest();
-    xhttp.addEventListener("load", function(){
-      var jobs = JSON.parse(this.response).data;
-      that.setState({jobs : jobs});
-    });
-    xhttp.open("GET", "/jobs");
-    xhttp.send();
-  },
+const Progress = React.createClass({
+    render() {
+        console.log(this.props.status);
+        if(this.props.status === 'progress') {
+            return (
+                <div className="status on-time">
+                    On-Time | Arriving at 3:15 pm
+                </div>
+            )
+        } else if(this.props.status === 'delayed') {
+            return (
+                <div className="status delayed">
+                    Delayed | Waiting for tram 18
+                </div>
+            )
+        } else if (this.props.status === 'completed') {
+            return (
+                <div className="status completed">
+                    Completed | Arived on 15/07/2016
+                </div>
+            )
+        } else if (this.props.status === 'hiring') {
+            return (
+                <div className="status hiring">
+                    Taking Bids
+                </div>
+            )
+        }
+
+    }
+});
+
+const Dashboard = React.createClass({
+    getInitialState : function(){
+        return {
+            jobs : []
+        }
+    },
+    componentDidMount : function(){
+        var that = this;
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.addEventListener("load", function(){
+            var jobs = JSON.parse(this.response).data;
+            that.setState({jobs : jobs});
+        });
+        xhttp.open("GET", "/jobs");
+        xhttp.send();
+    },
     pay : function(){
         PaymentSession.configure({
             fields: {
@@ -108,100 +141,105 @@ const Dashboard = React.createClass({
         });
         PaymentSession.updateSessionFromForm('card');
     },
-  handleAccept : function(event){
-    var that = this;
+    handleAccept : function(event){
+        var that = this;
 
-    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-    xmlhttp.addEventListener("load", function(){
-      var jobs = JSON.parse(this.response).data;
-      that.setState({jobs : jobs});
-    });
+        var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+        xmlhttp.addEventListener("load", function(){
+            var jobs = JSON.parse(this.response).data;
+            that.setState({jobs : jobs});
+        });
 
-    xmlhttp.open("POST", "/jobs/accept");
-    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xmlhttp.send(JSON.stringify({
-      appid : event.target.dataset.appid,
-      jobid : event.target.dataset.jobid
-    }));
-    this.pay();
-  },
-  handleChangeView : function(){
-    this.props.setView("jobview");
-  },
-  render : function(){
-    var that = this;
-    var payment = <Payment />
-    var allJobs = this.state.jobs.map(function(element){
-      var applicants = element.applicants.map(function(applicant){
+        xmlhttp.open("POST", "/jobs/accept");
+        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xmlhttp.send(JSON.stringify({
+            appid : event.target.dataset.appid,
+            jobid : event.target.dataset.jobid
+        }));
+        this.pay();
+    },
+    handleChangeView : function(){
+        this.props.setView("jobview");
+    },
+    render : function(){
+        var that = this;
+        var payment = <Payment />;
+        var allJobs = this.state.jobs.map(function(element){
+            var courier = function() {
+                return(
+                    <div className="app-list">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <p><b>Courier Name: </b>{element.courier.name}</p>
+                            </div>
+                            <div className="col-sm-6">
+                            {element.status != 'completed' ? <button onClick={that.handleChangeView}>View Job Progress</button> : null}
+                            </div>
+                        </div>
+                    </div>
+                )
+            };
+            var applicants = element.applicants.map(function(applicant){
+                return (
+                    <div className="app-list" key={applicant.id}>
+                        <div className="row">
+                            <div className="col-md-3">
+                                <p><b>Applicant Name: </b>{applicant.name}</p>
+                            </div>
+                            <div className="col-md-3">
+                                <p><b>Offer: </b>{applicant.offer}</p>
+                            </div>
+                            <div className="col-md-3">
+                                <p><b>Estimated Time: </b>{applicant.time}</p>
+                            </div>
+                            <div className="col-md-3">
+                                <button
+                                    data-appid={applicant.id}
+                                    data-jobid={element.id}
+                                    onClick={that.handleAccept}>
+                                    Accept Applicant
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )
+            });
+            var hiddenStyle ={display:"none"};
+            return (
+                <div className="list" key={element.id}>
+                    <div className="arrival-bar">
+                        <Progress status={element.status} />
+                    </div>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <p><b>Name:</b> {element.client}</p>
+                            <p><b>Time Frame:</b> {element.time}</p>
+                            <p><b>Budget:</b> {element.budget}</p>
+                        </div>
+                        <div className="col-md-6">
+                            <p><b>Product:</b> {element.item}</p>
+                            <p><b>Delivery Location:</b> {element.delivery_location}</p>
+                            <p><b>Product Location:</b> {element.item_location}</p>
+                        </div>
+                    </div>
+                    <div>
+                    {element.status != 'hiring' ? courier() : applicants}
+                    </div>
+                    <div style={hiddenStyle}>
+                        <Payment ref={(payment) => { that._child = payment; }} />
+                    </div>
+                </div>
+            )
+        });
         return (
-          <div className="app-list" key={applicant.id}>
-            <div className="row">
-                <div className="col-md-3">
-                    <p><b>Applicant Name: </b>{applicant.name}</p>
-                </div>
-                <div className="col-md-3">
-                    <p><b>Offer: </b>{applicant.offer}</p>
-                </div>
-                <div className="col-md-3">
-                    <p><b>Estimated Time: </b>{applicant.time}</p>
-                </div>
-                <div className="col-md-3">
-                    <button
-                        data-appid={applicant.id}
-                        data-jobid={element.id}
-                        onClick={that.handleAccept}>
-                        Accept Applicant
-                    </button>
+            <div className="clientdashboard list-view">
+                <h3 className="sub-heading" >all your jobs</h3>
+                <div>
+               {allJobs}
                 </div>
             </div>
-          </div>
         )
-      });
-      var hiddenStyle ={
-          display:"none"
-      }
-      return (
-        <div key={element.id}>
-            <div className="row">
-                <div className="col-md-3">
-                    <p><b>Name:</b> {element.client}</p>
-                    <p><b>Delivery Location:</b> {element.delivery_location}</p>
-                </div>
-                <div className="col-md-3">
-                    <p><b>Product:</b> {element.item}</p>
-                    <p><b>Product Location:</b> {element.item_location}</p>
-
-                </div>
-                <div className="col-md-3">
-                    <p><b>Time Frame:</b> {element.time}</p>
-                    <p><b>Budget:</b> {element.budget}</p>
-                </div>
-                <div className="col-md-3">
-                    <p><b>Time Frame:</b> {element.time}</p>
-                    <p><b>Budget:</b> {element.budget}</p>
-                </div>
-            </div>
-            <div>
-                <p>{element.courier ? element.courier[0].name : null}</p>
-          {applicants}
-          {element.courier ? <button onClick={that.handleChangeView}>View Job Progress</button> : null}
-            </div>
-            <div style={hiddenStyle}>
-                <Payment ref={(payment) => { that._child = payment; }} />
-            </div>
-        </div>
-      )
-    });
-
-    return (
-      <div className="clientdashboard list-view">
-          <h3 className="sub-heading" >dashboard</h3>
-          <div className="list">
-               {allJobs.length > 0 ? allJobs : 'No Jobs Listed'}
-          </div>
-      </div>
-    )
-  }
+    }
 });
 
 module.exports = Dashboard;
