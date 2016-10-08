@@ -1,0 +1,41 @@
+.logo {
+  fill: $brand-primary;
+  filter: drop-shadow( 2px 2px 5px 0px rgba(0, 0, 0, 0.2) );
+}
+
+
+hr.brand {
+  border:1px solid $brand-primary;
+  width:200px;
+  margin:0 auto;
+  display:block;
+}
+
+.header {
+  height:auto;
+  padding:10px 20px;
+}
+
+.navbar-default {
+  .navbar-brand {
+    padding: 10px;
+  }
+  .navbar-nav > li {
+    a {
+      border: 1px solid $brand-primary;
+      padding:10px 20px;
+      border-radius: 5px;
+      margin:20px 15px;
+      &:hover {
+        color: white;
+        background-color: $brand-primary;
+      }
+    }
+
+
+    &.active a {
+      color: white;
+      background-color: $brand-primary;
+    }
+  }
+}

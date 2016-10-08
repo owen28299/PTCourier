@@ -1,21 +1,37 @@
-'use strict'
+'use strict';
 
 import React from 'react';
 import { Link } from 'react-router';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+
+import Logo from './partials/images.js';
 
 const Header = React.createClass({
-  render : function(){
-    return (
-      <div className="header">
-        <h1>PT Courier App</h1>
-        <Link to="/">Home</Link>
-        <Link to="/courier">For Couriers</Link>
-        <Link to="/client">For Clients</Link>
-        <Link to="/clientdash">Client Dashboard</Link>
-        {this.props.children}
-      </div>
-    )
-  }
+    render : function(){
+        return (
+            <div>
+                <Navbar>
+                    <Navbar.Header>
+                        <Navbar.Brand>
+                            <Link to="/">
+                                <Logo />
+                            </Link>
+                        </Navbar.Brand>
+                    </Navbar.Header>
+                    <Nav pullRight>
+                        <LinkContainer to="/client">
+                            <NavItem eventKey={1} >Customer Login</NavItem>
+                        </LinkContainer>
+                        <LinkContainer to="/courier">
+                            <NavItem eventKey={2}>Courier Login</NavItem>
+                        </LinkContainer>
+                    </Nav>
+                </Navbar>
+                 {this.props.children}
+            </div>
+        )
+    }
 });
 
 module.exports = Header;
