@@ -195,10 +195,9 @@ const Dashboard = React.createClass({
 
     return (
       <div className="clientdashboard list-view">
-        <h1>Welcome, Mark!</h1>
-          <h3 className="sub-heading" >Dashboard</h3>
+          <h3 className="sub-heading" >dashboard</h3>
           <div className="list">
-              {allJobs}
+               {allJobs.length > 0 ? allJobs : 'No Jobs Listed'}
           </div>
       </div>
     )

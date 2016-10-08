@@ -41,7 +41,7 @@ const JobView = React.createClass({
           <p>{element.item}</p>
           <p>{element.item_location}</p>
           <p>{element.delivery_location}</p>
-          <div>Insert live route here?</div>
+          <div>Insert live route here</div>
           <p>{element.time}</p>
           <p>{element.budget}</p>
           <button>Mark Item Purchased</button>
@@ -50,9 +50,11 @@ const JobView = React.createClass({
     });
 
     return (
-      <div className="jobs">
-          <h3 className="sub-heading">My Jobs</h3>
-      {allJobs}
+      <div className="jobs list-view">
+          <h3 className="sub-heading">my jobs</h3>
+          <div className="list">
+              {allJobs.length > 0 ? allJobs : 'You have no jobs'}
+          </div>
       </div>
     )
   }

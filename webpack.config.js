@@ -23,7 +23,7 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|woff|woff2|eot|ttf|svg)$/,
-                loader: "file-loader?name=./public/theme/assets/images/[name].[ext]"
+                loader: "file-loader?name=./assets/images/[name].[ext]"
             }
         ]
     },

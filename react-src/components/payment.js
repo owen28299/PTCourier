@@ -114,7 +114,7 @@ const Payment = React.createClass({
     },
     render : function(){
         return (
-            <div className="paymentmodule view">
+            <div className="paymentmodule">
                 <div className="container">
                     <h3 className="sub-heading">payment details</h3>
                     <div className="form">
