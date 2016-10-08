@@ -5,13 +5,13 @@ const Payment = require('./payment');
 const Progress = React.createClass({
     render() {
         console.log(this.props.status);
-        if(this.props.status === 'progress') {
+        if (this.props.status === 'progress') {
             return (
                 <div className="status on-time">
                     On-Time | Arriving at 3:15 pm
                 </div>
             )
-        } else if(this.props.status === 'delayed') {
+        } else if (this.props.status === 'delayed') {
             return (
                 <div className="status delayed">
                     Delayed | Waiting for tram 18
@@ -30,28 +30,29 @@ const Progress = React.createClass({
                 </div>
             )
         }
-
     }
 });
 
 const Dashboard = React.createClass({
-    getInitialState : function(){
+    getInitialState: function () {
         return {
-            jobs : []
+            jobs: [],
+            offer: 0.0
         }
     },
-    componentDidMount : function(){
+    componentDidMount: function () {
         var that = this;
 
         var xhttp = new XMLHttpRequest();
-        xhttp.addEventListener("load", function(){
+        xhttp.addEventListener("load", function () {
             var jobs = JSON.parse(this.response).data;
-            that.setState({jobs : jobs});
+            that.setState({jobs: jobs});
         });
         xhttp.open("GET", "/jobs");
         xhttp.send();
     },
-    pay : function(){
+    pay: function () {
+        var offer = this.state.offer;
         PaymentSession.configure({
             fields: {
                 // ATTACH HOSTED FIELDS TO YOUR PAYMENT PAGE FOR A CREDIT CARD
@@ -65,12 +66,12 @@ const Dashboard = React.createClass({
             //SPECIFY YOUR MITIGATION OPTION HERE
             frameEmbeddingMitigation: ["javascript"],
             callbacks: {
-                initialized: function(response) {
+                initialized: function (response) {
                     // HANDLE INITIALIZATION RESPONSE
                     if (response.status) {
                         if ("ok" == response.status) {
                             console.log("BOOM");
-                        } else if ("fields_in_error" == response.status)  {
+                        } else if ("fields_in_error" == response.status) {
 
                             console.log("Session update failed with field errors.");
                             if (response.errors.cardNumber) {
@@ -85,16 +86,16 @@ const Dashboard = React.createClass({
                             if (response.errors.securityCode) {
                                 console.log("Security code invalid.");
                             }
-                        } else if ("request_timeout" == response.status)  {
+                        } else if ("request_timeout" == response.status) {
                             console.log("Session update failed with request timeout: " + response.errors.message);
-                        } else if ("system_error" == response.status)  {
+                        } else if ("system_error" == response.status) {
                             console.log("Session update failed with system error: " + response.errors.message);
                         }
                     } else {
                         console.log("Session update failed: " + response);
                     }
                 },
-                formSessionUpdate: function(response) {
+                formSessionUpdate: function (response) {
                     // HANDLE RESPONSE FOR UPDATE SESSION
                     if (response.status) {
                         if ("ok" == response.status) {
@@ -109,7 +110,7 @@ const Dashboard = React.createClass({
                             if (response.sourceOfFunds.provided.card.scheme == 'MASTERCARD') {
                                 console.log("The user entered a MasterCard credit card.")
                             }
-                        } else if ("fields_in_error" == response.status)  {
+                        } else if ("fields_in_error" == response.status) {
 
                             console.log("Session update failed with field errors.");
                             if (response.errors.cardNumber) {
@@ -124,10 +125,10 @@ const Dashboard = React.createClass({
                             if (response.errors.securityCode) {
                                 console.log("Security code invalid.");
                             }
-                        } else if ("request_timeout" == response.status)  {
-                            console.log("Session update failed with request timeout: " + response.errors.message);
-                        } else if ("system_error" == response.status)  {
-                            console.log("Session update failed with system error: " + response.errors.message);
+                        } else if ("request_timeout" == response.status) {
+                            console.log("Session update failed with request timeout: ");
+                        } else if ("system_error" == response.status) {
+                            console.log("Session update failed with system error: ");
                         }
                     } else {
                         console.log("Session update failed: " + response);
@@ -135,42 +136,41 @@ const Dashboard = React.createClass({
                 }
             },
             order: {
-                amount: 10.00,
+                amount: offer,
                 currency: "AUD"
             }
         });
         PaymentSession.updateSessionFromForm('card');
     },
-    handleAccept : function(event){
+    handleAccept: function (event) {
         var that = this;
-
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-        xmlhttp.addEventListener("load", function(){
+        xmlhttp.addEventListener("load", function () {
             var jobs = JSON.parse(this.response).data;
-            that.setState({jobs : jobs});
+            that.setState({jobs: jobs});
         });
-
         xmlhttp.open("POST", "/jobs/accept");
         xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xmlhttp.send(JSON.stringify({
-            appid : event.target.dataset.appid,
-            jobid : event.target.dataset.jobid
+            appid: event.target.dataset.appid,
+            jobid: event.target.dataset.jobid
         }));
         this.pay();
     },
-    handleChangeView : function(){
+    handleChangeView: function () {
         this.props.setView("jobview");
     },
-    render : function(){
+    render: function () {
         var that = this;
         var payment = <Payment />;
-        var allJobs = this.state.jobs.map(function(element){
-            var courier = function() {
-                return(
+        var allJobs = this.state.jobs.map(function (element) {
+            var courier = function () {
+                return (
                     <div className="app-list">
                         <div className="row">
                             <div className="col-md-6">
-                                <p><b>Courier Name: </b>{element.courier.name}</p>
+                                <p>
+                                    <b>Courier Name: </b>{element.courier.name}</p>
                             </div>
                             <div className="col-sm-6">
                             {element.status != 'completed' ? <button onClick={that.handleChangeView}>View Job Progress</button> : null}
@@ -179,18 +179,21 @@ const Dashboard = React.createClass({
                     </div>
                 )
             };
-            var applicants = element.applicants.map(function(applicant){
+            var applicants = element.applicants.map(function (applicant) {
                 return (
                     <div className="app-list" key={applicant.id}>
                         <div className="row">
                             <div className="col-md-3">
-                                <p><b>Applicant Name: </b>{applicant.name}</p>
+                                <p>
+                                    <b>Applicant Name: </b>{applicant.name}</p>
                             </div>
                             <div className="col-md-3">
-                                <p><b>Offer: </b>{applicant.offer}</p>
+                                <p>
+                                    <b>Offer: </b>{applicant.offer.toFixed(2)} AUD</p>
                             </div>
                             <div className="col-md-3">
-                                <p><b>Estimated Time: </b>{applicant.time}</p>
+                                <p>
+                                    <b>Estimated Time: </b>{applicant.time * 60} minutes</p>
                             </div>
                             <div className="col-md-3">
                                 <button
@@ -204,7 +207,7 @@ const Dashboard = React.createClass({
                     </div>
                 )
             });
-            var hiddenStyle ={display:"none"};
+            var hiddenStyle = {display: "none"};
             return (
                 <div className="list" key={element.id}>
                     <div className="arrival-bar">
@@ -213,29 +216,34 @@ const Dashboard = React.createClass({
                     <div className="row">
                         <div className="col-md-6">
                             <p><b>Name:</b> {element.client}</p>
-                            <p><b>Time Frame:</b> {element.time}</p>
-                            <p><b>Budget:</b> {element.budget}</p>
+                            <p><b>Time Frame:</b> {element.time * 60} minutes </p>
+                            <p><b>Budget:</b> {element.budget.toFixed(2)}</p>
                         </div>
                         <div className="col-md-6">
                             <p><b>Product:</b> {element.item}</p>
                             <p><b>Delivery Location:</b> {element.delivery_location}</p>
                             <p><b>Product Location:</b> {element.item_location}</p>
+                            {element.status === 'progress' || element.status === 'delayed' ? <button onClick={that.handleChangeView}>View Job Progress</button> : null}
                         </div>
                     </div>
                     <div>
-                    {element.status != 'hiring' ? courier() : applicants}
-                    </div>
+                        <p>{element.courier ? element.courier.name + " has been paid " + element.budget.toFixed(2) + " AUD to deliver your product." : applicants}</p>
+
+                   </div>
                     <div style={hiddenStyle}>
-                        <Payment ref={(payment) => { that._child = payment; }} />
+                        <Payment ref={(payment) => {
+                            that._child = payment;
+                        }} />
                     </div>
                 </div>
             )
+
         });
         return (
             <div className="clientdashboard list-view">
-                <h3 className="sub-heading" >all your jobs</h3>
+                <h3 className="sub-heading" >dashboard</h3>
                 <div>
-               {allJobs}
+               {allJobs.length > 0 ? allJobs : 'No Jobs Listed'}
                 </div>
             </div>
         )

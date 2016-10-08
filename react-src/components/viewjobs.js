@@ -4,31 +4,45 @@ import { browserHistory } from 'react-router';
 const Add = React.createClass({
   getInitialState : function(){
     return {
-      jobs : []
+      jobs : [],
+      courierId : 2,
+      courier : null
     }
   },
   apply : function(event){
     browserHistory.push("/courier/apply/" + event.target.id)
   },
   componentDidMount : function(){
-    var that = this;
+     var that = this;
 
-    var xhttp = new XMLHttpRequest();
-    xhttp.addEventListener("load", function(){
-      var jobs = JSON.parse(this.response).data;
-      that.setState({jobs : jobs});
-    });
-    xhttp.open("GET", "/jobs");
-    xhttp.send();
+     var courierRequest = new XMLHttpRequest();
+     courierRequest.addEventListener("load", function(){
+       var courier = JSON.parse(this.response).data;
+       that.setState({courier : courier[0]});
+     });
+     courierRequest.open("GET", "/couriers/" + that.state.courierId);
+     courierRequest.send();
+
+     var jobsRequest = new XMLHttpRequest();
+     jobsRequest.addEventListener("load", function(){
+       var jobs = JSON.parse(this.response).data;
+       that.setState({jobs : jobs});
+     });
+     jobsRequest.open("GET", "/jobs");
+     jobsRequest.send();
   },
   render : function(){
     var that = this;
 
     var allJobs = this.state.jobs.map(function(element){
-      var plannerUrl = "http://54.206.123.83:10080/?module=planner&fromPlace="
-          + element.item_location_geocode.latitude + "%2C" + element.item_location_geocode.longitude + "&toPlace="
-          + element.delivery_location_geocode.latitude + "%2C" + element.delivery_location_geocode.longitude
-          + "&time=9%3A19am&date=10-09-2016&mode=TRANSIT%2CWALK&maxWalkDistance=804.672&arriveBy=true&wheelchair=false&locale=en&startTransitStopId=4_19842&itinIndex=0";
+        var plannerUrl = "http://54.206.123.83:10080/?module=planner&fromPlace="
+            + element.item_location_geocode.latitude + "%2C" + element.item_location_geocode.longitude + "&toPlace="
+            + element.delivery_location_geocode.latitude + "%2C" + element.delivery_location_geocode.longitude
+            + "&time=9%3A19am&date=10-09-2016&mode=TRANSIT%2CWALK&maxWalkDistance=804.672&arriveBy=true&wheelchair=false&locale=en&startTransitStopId=4_19842&itinIndex=0";
+        var courierToItemUrl = "http://54.206.123.83:10080/?module=planner&fromPlace="
+            + that.state.courier.home_geocode.latitude + "%2C" + that.state.courier.home_geocode.longitude + "&toPlace="
+            + element.item_location_geocode.latitude + "%2C" + element.item_location_geocode.longitude
+            + "&time=9%3A19am&date=10-09-2016&mode=TRANSIT%2CWALK&maxWalkDistance=804.672&arriveBy=true&wheelchair=false&locale=en&startTransitStopId=4_19842&itinIndex=0";
       if(element.status === "hiring"){
         return (
         <div key={element.id}>
@@ -49,6 +63,9 @@ const Add = React.createClass({
            </div>
             <div className="row">
                 <div className="col-sm-12">
+                    <h3 className="overlap-map">Getting to the goods</h3>
+                    <iframe className="map-iframe" src={courierToItemUrl}></iframe>
+                    <h3 className="overlap-map">Getting to the purchaser</h3>
                     <iframe className="map-iframe" src={plannerUrl}></iframe>
                     <button id={element.id} onClick={that.apply}>Apply</button>
                 </div>

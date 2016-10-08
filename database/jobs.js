@@ -4,10 +4,10 @@ module.exports = {
       id : 0,
       client : "Mark Smith",
       item : "A4 Batteries",
-      item_location : "JB Hifi",
-      delivery_location : "Melbourne Convention Centre",
-      item_location_geocode : { latitude: -37.8136, longitude: 144.9031},
-      delivery_location_geocode : { latitude: -37.8036, longitude: 144.9631},
+      item_location : "261 Elizabeth St, Melbourne VIC 3000",
+      delivery_location : "Melbourne Convention and Exhibition Centre, Convention Centre Place, South Wharf VIC",
+      item_location_geocode : { latitude: -37.8126137, longitude: 144.9599423},
+      delivery_location_geocode : { latitude: -37.8253897, longitude: 144.9509223},
       time : 3,
       budget : 50,
       status : "hiring",
@@ -160,7 +160,7 @@ module.exports = {
     {
       id : 2,
       name: "Jimmy McGrath",
-      home_geocode : { latitude: -37.8526, longitude: 144.9731}
+      home_geocode : { latitude: -37.85276, longitude: 144.96872}
     }
   ]
 };
