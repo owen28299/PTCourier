@@ -6,7 +6,8 @@ const express    = require('express'),
       ;
 
 const jobs       = require('./routes/jobs'),
-      payment    = require('./routes/payment')
+      payment    = require('./routes/payment'),
+      session = require('client-sessions')
       ;
 
 app
@@ -26,6 +27,12 @@ app.get('*', function(req, res){
     });
 });
 
+app.use(session({
+    cookieName: 'session',
+    secret: 'random_string_goes_here',
+    duration: 30 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000,
+}));
 app.listen(PORT, function() {
   console.log("Server listening on port: 3000");
 });

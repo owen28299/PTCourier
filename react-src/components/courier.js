@@ -3,9 +3,15 @@ import { browserHistory } from 'react-router';
 
 const ViewJobs = require('./viewjobs');
 const MyJobs = require('./courierjobview');
+var session = require('client-sessions');
+const JobFunctions  = require('../../lib/jobfunctions');
 
 const Add = React.createClass({
   getInitialState : function(){
+    if(this.props.params != null) {
+      var id = this.props.params.id;
+      session.courierid = id;
+    }
     return {
       view : "jobslist"
     }
@@ -31,6 +37,10 @@ const Add = React.createClass({
         view = <ViewJobs />;
     }
 
+    var courierId = session.courierid;
+
+    var courierEntity = JobFunctions.getCourier(courierId);
+
     return (
       <div className="add">
         <div className="subnav">
@@ -39,7 +49,7 @@ const Add = React.createClass({
         </div>
           <div className="view">
               <div className="container">
-                  <h1>Welcome, Jimmy!</h1>
+                  <h1>Welcome, {courierEntity.name}!</h1>
               {view}
               </div>
           </div>

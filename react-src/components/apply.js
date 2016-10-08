@@ -1,5 +1,7 @@
 import React from 'react';
 import { browserHistory, Link } from 'react-router';
+var session = require('client-sessions');
+const JobFunctions  = require('../../lib/jobfunctions');
 
 const Application = React.createClass({
   getInitialState : function(){
@@ -29,6 +31,10 @@ const Application = React.createClass({
   handleSubmit : function(){
     var that = this;
 
+    var courierId = session.courierid;
+
+    var courierEntity = JobFunctions.getCourier(courierId);
+
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
     xmlhttp.open("PUT", "/jobs");
     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -36,7 +42,7 @@ const Application = React.createClass({
       offer : that.state.offer,
       time : that.state.time,
       id : that.props.params.id,
-      name : "Jimmy McGrath"
+      name : courierEntity.Name
     }));
     browserHistory.push("/courier");
   },
@@ -54,9 +60,13 @@ const Application = React.createClass({
       )
     });
 
+      var courierId = session.courierid;
+
+      var courierEntity = JobFunctions.getCourier(courierId);
+
     return (
       <div className="courier-application">
-        <h1>Welcome, Jimmy!</h1>
+        <h1>Welcome, {courierEntity.Name}!</h1>
         <Link to="/courier">Back to Jobs</Link>
         <h2>Apply to job</h2>
         {jobdetails}

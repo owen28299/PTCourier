@@ -2,7 +2,8 @@
 
 const express       = require('express'),
       router        = express.Router(),
-      JobFunctions  = require('../lib/jobfunctions')
+      JobFunctions  = require('../lib/jobfunctions'),
+      session = require('client-sessions');
       ;
 
 router.route('/')
@@ -25,7 +26,7 @@ router.route('/')
     });
   })
   .put(function(req,res){
-    JobFunctions.applyToJob(req.body.id, req.body.courier, req.body.offer, req.body.time);
+    JobFunctions.applyToJob(session.courierid, req.body.id, req.body.courier, req.body.offer, req.body.time);
 
     res.send({
       success : true,
