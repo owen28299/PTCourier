@@ -42,6 +42,11 @@ module.exports = {
       id : 1,
       name: "Mickey Mouse",
       home_geocode : { latitude: -37.8456, longitude: 144.9621}
+    },
+    {
+      id : 2,
+      name: "Jimmy McGrath",
+      home_geocode : { latitude: -37.8526, longitude: 144.9731}
     }
   ]
 };
