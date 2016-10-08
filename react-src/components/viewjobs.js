@@ -38,7 +38,6 @@ const Add = React.createClass({
           </div>
         )
       }
-
     });
 
     return (

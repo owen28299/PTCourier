@@ -2,6 +2,7 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 
 const ViewJobs = require('./viewjobs');
+const MyJobs = require('./courierjobview');
 
 const Add = React.createClass({
   getInitialState : function(){
@@ -21,6 +22,13 @@ const Add = React.createClass({
       case "jobslist":
         view = <ViewJobs />;
         break;
+
+      case "myjobs":
+        view = <MyJobs />;
+        break;
+
+      default:
+        view = <ViewJobs />;
     }
 
     return (
