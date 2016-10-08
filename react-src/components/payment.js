@@ -116,7 +116,7 @@ const Payment = React.createClass({
         return (
             <div className="paymentmodule view">
                 <div className="container">
-                    <h3 className="sub-heading">Please enter your payment details</h3>
+                    <h3 className="sub-heading">payment details</h3>
                     <div className="form">
                         <label>Card Number:</label>
                         <input
@@ -142,7 +142,6 @@ const Payment = React.createClass({
                             onChange={this.handleChange.bind(this, "securityCode")}
                         />
                         <div className="container"></div>
-                        <button id="payButton" onClick={this.pay}>Pay Now</button>
                     </div>
                 </div>
             </div>
