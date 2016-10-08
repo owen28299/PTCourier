@@ -26,7 +26,7 @@ hr.brand {
       padding:10px 20px;
       border-radius: 5px;
       margin:20px 15px;
-      &:hover {
+      &:hover, &:focus {
         color: white;
         background-color: $brand-primary;
       }
@@ -36,6 +36,10 @@ hr.brand {
     &.active a {
       color: white;
       background-color: $brand-primary;
+      &:hover, &:focus {
+        color: white;
+        background-color: $brand-primary;
+      }
     }
   }
 }
