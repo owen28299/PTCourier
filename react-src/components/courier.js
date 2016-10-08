@@ -8,7 +8,7 @@ const Add = React.createClass({
     }
   },
   apply : function(event){
-    browserHistory.push("/apply/" + event.target.id)
+    browserHistory.push("/courier/apply/" + event.target.id)
   },
   componentDidMount : function(){
     var that = this;
@@ -43,7 +43,7 @@ const Add = React.createClass({
 
     return (
       <div className="add">
-        <h1>For Couriers</h1>
+        <h1>Welcome, Jimmy!</h1>
         <h2>Currently listed jobs</h2>
         {allJobs}
       </div>

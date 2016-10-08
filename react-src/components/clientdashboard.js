@@ -72,7 +72,8 @@ const Dashboard = React.createClass({
 
     return (
       <div className="clientdashboard">
-        <h1>Client Dashboard</h1>
+        <h1>Welcome, Mark!</h1>
+        <h2>Dashboard</h2>
         {allJobs}
       </div>
     )
