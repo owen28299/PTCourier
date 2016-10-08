@@ -110,26 +110,18 @@ var Map = React.createClass({
     render: function () {
         return (
             <div>
-
                 <div className="row">
                     <div className="col-sm-12">
-
                         <form className="form-inline" onSubmit={this.handleFormSubmit}>
                             <div className="row">
-                                <div className="col-xs-8 col-sm-10">
-
-                                    <div className="form-group">
-                                        <label className="sr-only" htmlFor="address">Address</label>
-                                        <input type="text" className="form-control input-lg" id="address" placeholder={this.state.foundAddress} ref={this.setSearchInputElementReference} required />
-                                    </div>
-
+                                <div className="col-xs-11">
+                                    <label className="sr-only" htmlFor="address">Address</label>
+                                    <input type="text" id="address" placeholder={this.state.foundAddress} ref={this.setSearchInputElementReference} required />
                                 </div>
-                                <div className="col-xs-4 col-sm-2">
-
+                                <div className="col-xs-1">
                                     <button type="submit" className="btn btn-default btn-lg">
                                         <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
                                     </button>
-
                                 </div>
                             </div>
                         </form>

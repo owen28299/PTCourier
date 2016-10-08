@@ -114,32 +114,34 @@ const CourierPayment = React.createClass({
     render : function(){
         return (
             <div className="paymentmodule">
-                <div>Please enter your payment details:</div>
-                <label>Card Number:</label>
-                <input
-                    type="text" id="card-number" readOnly="readOnly" value={this.state.number}
-                    onChange={this.handleChange.bind(this, "number")}
-                />
-                <div className="container"></div>
-                <label>Expiry Month:</label>
-                <input
-                    type="text" id="expiry-month" readOnly="readOnly" value={this.state.expiryMonth}
-                    onChange={this.handleChange.bind(this, "expiryMonth")}
-                />
-                <div className="container"></div>
-                <label>Expiry Year:</label>
-                <input
-                    type="text" id="expiry-year" readOnly="readOnly" value={this.state.expiryYear}
-                    onChange={this.handleChange.bind(this, "expiryYear")}
-                />
-                <div className="container"></div>
-                <label>Security Code:</label>
-                <input
-                    type="text" id="security-code" readOnly="readOnly" value={this.state.securityCode}
-                    onChange={this.handleChange.bind(this, "securityCode")}
-                />
-                <div className="container"></div>
-                <button id="payButton" onClick={this.pay}>Pay Now</button>
+                <div className="container">
+                    <h3 className="sub-heading">payment details</h3>
+                    <div className="form">
+                        <label>Card Number:</label>
+                        <input
+                            type="text" id="card-number" readOnly="readOnly" value={this.state.number}
+                            onChange={this.handleChange.bind(this, "number")}
+                        />
+                        <div className="container"></div>
+                        <label>Expiry Month:</label>
+                        <input
+                            type="text" id="expiry-month" readOnly="readOnly" value={this.state.expiryMonth}
+                            onChange={this.handleChange.bind(this, "expiryMonth")}
+                        />
+                        <div className="container"></div>
+                        <label>Expiry Year:</label>
+                        <input
+                            type="text" id="expiry-year" readOnly="readOnly" value={this.state.expiryYear}
+                            onChange={this.handleChange.bind(this, "expiryYear")}
+                        />
+                        <div className="container"></div>
+                        <label>Security Code:</label>
+                        <input
+                            type="text" id="security-code" readOnly="readOnly" value={this.state.securityCode}
+                            onChange={this.handleChange.bind(this, "securityCode")}
+                        />
+                    </div>
+                </div>
             </div>
         )
     }

@@ -52,7 +52,6 @@ const Add = React.createClass({
                     <iframe className="map-iframe" src={plannerUrl}></iframe>
                     <button id={element.id} onClick={that.apply}>Apply</button>
                 </div>
-
             </div>
         </div>
         )
@@ -61,9 +60,9 @@ const Add = React.createClass({
 
     return (
       <div className="list-view">
-        <h3 className="sub-heading" >Currently listed jobs</h3>
+        <h3 className="sub-heading" >currently listed jobs</h3>
           <div className="list">
-               {allJobs}
+               {allJobs.length > 0 ? allJobs : 'No Jobs Listed'}
           </div>
       </div>
     )
