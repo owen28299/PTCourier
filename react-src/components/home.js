@@ -6,7 +6,7 @@ import { browserHistory } from 'react-router';
 const GetAll = React.createClass({
   render : function(){
     return (
-      <div className="home">
+      <div className="home view">
           <div className="parallax-bg" style={{backgroundImage: 'url(\'./theme/assets/images/melb_bg.jpg\')'}}>
               <div className="container">
                   <div className="row title">

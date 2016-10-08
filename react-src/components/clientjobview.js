@@ -34,21 +34,32 @@ const ClientJobView = React.createClass({
     var allJobs = myJobs.map(function(element){
       return (
         <div key={element.id}>
-          <p>{element.client}</p>
-          <p>{element.item}</p>
-          <p>{element.item_location}</p>
-          <p>{element.delivery_location}</p>
-          <p>{element.time}</p>
-          <p>{element.budget}</p>
-          <button>Mark Item Received</button>
+            <div className="row">
+                <div className="col-md-4">
+                    <p><b>Name:</b> {element.client}</p>
+                    <p><b>Delivery Location:</b> {element.delivery_location}</p>
+                </div>
+                <div className="col-md-4">
+                    <p><b>Product:</b> {element.item}</p>
+                    <p><b>Product Location:</b> {element.item_location}</p>
+
+                </div>
+                <div className="col-md-4">
+                    <p><b>Time Frame:</b> {element.time}</p>
+                    <p><b>Budget:</b> {element.budget}</p>
+                </div>
+            </div>
+            <button>Mark Item Received</button>
         </div>
       )
     });
 
     return (
-      <div className="add">
-        <h2>My Deliveries</h2>
-        {allJobs}
+      <div className="add list-view">
+        <h3 className="sub-heading" >My Deliveries</h3>
+          <div className="list">
+              {allJobs}
+          </div>
       </div>
     )
   }

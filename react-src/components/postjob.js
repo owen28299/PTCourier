@@ -38,45 +38,44 @@ const PostJob = React.createClass({
     this.setState(nextState);
   },
   render : function(){
-    var map = <Map />
     return (
-      <div className="get">
-        <h1>Welcome, Mark!</h1>
-        <p>Instant delivery at your fingertips</p>
-        <h2>Post a Job</h2>
-        <p>Name</p>
-        <input
-          type="text"
-          value={this.state.client}
-          onChange={this.handleChange.bind(this, "client")}
-        />
-        <p>Item</p>
-        <input
-          type="text"
-          value={this.state.item}
-          onChange={this.handleChange.bind(this, "item")}
-        />
+      <div className="postjob">
+          <h3 className="sub-heading">Post a Job</h3>
+          <div className="form">
+              <label>Name</label>
+              <input
+                  type="text"
+                  value={this.state.client}
+                  onChange={this.handleChange.bind(this, "client")}
+              />
+              <label>Item</label>
+              <input
+                  type="text"
+                  value={this.state.item}
+                  onChange={this.handleChange.bind(this, "item")}
+              />
 
-        <p>Item Location</p>
-        <Map ref={(map) => { this._child = map; }} updateState={this.updateState} position="item_location_geocode" address="item_location" />
+              <label>Item Location</label>
+              <Map ref={(map) => { this._child = map; }} updateState={this.updateState} position="item_location_geocode" address="item_location" />
 
-        <p>Delivery Location</p>
-        <Map ref={(map) => { this._child = map; }} updateState={this.updateState} position="delivery_location_geocode" address="delivery_location" />
+              <label>Delivery Location</label>
+              <Map ref={(map) => { this._child = map; }} updateState={this.updateState} position="delivery_location_geocode" address="delivery_location" />
 
-        <p>Time Limit</p>
-        <input
-          type="text"
-          value={this.state.time}
-          onChange={this.handleChange.bind(this, "time")}
-        />
-        <p>Budget</p>
-        <input
-          type="text"
-          value={this.state.budget}
-          onChange={this.handleChange.bind(this, "budget")}
-        />
-        <br />
-        <button onClick={this.handleSubmit}>Submit</button>
+              <label>Time Limit</label>
+              <input
+                  type="text"
+                  value={this.state.time}
+                  onChange={this.handleChange.bind(this, "time")}
+              />
+              <label>Budget</label>
+              <input
+                  type="text"
+                  value={this.state.budget}
+                  onChange={this.handleChange.bind(this, "budget")}
+              />
+              <br />
+              <button onClick={this.handleSubmit}>Submit</button>
+          </div>
       </div>
     )
   }

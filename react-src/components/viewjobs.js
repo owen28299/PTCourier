@@ -31,26 +31,40 @@ const Add = React.createClass({
           + "&time=9%3A19am&date=10-09-2016&mode=TRANSIT%2CWALK&maxWalkDistance=804.672&arriveBy=true&wheelchair=false&locale=en&startTransitStopId=4_19842&itinIndex=0";
       if(element.status === "hiring"){
         return (
-          <div key={element.id}>
-            <p>{element.client}</p>
-            <p>{element.item}</p>
-            <p>{element.item_location}</p>
-            <p>{element.delivery_location}</p>
-            <div>
-              <iframe className="map-iframe" src={plannerUrl}></iframe>
+        <div key={element.id}>
+           <div className="row">
+               <div className="col-md-4">
+                   <p><b>Name:</b> {element.client}</p>
+                   <p><b>Delivery Location:</b> {element.delivery_location}</p>
+               </div>
+               <div className="col-md-4">
+                   <p><b>Product:</b> {element.item}</p>
+                   <p><b>Product Location:</b> {element.item_location}</p>
+
+               </div>
+               <div className="col-md-4">
+                   <p><b>Time Frame:</b> {element.time}</p>
+                   <p><b>Budget:</b> {element.budget}</p>
+               </div>
+           </div>
+            <div className="row">
+                <div className="col-sm-12">
+                    <iframe className="map-iframe" src={plannerUrl}></iframe>
+                    <button id={element.id} onClick={that.apply}>Apply</button>
+                </div>
+
             </div>
-            <p>{element.time}</p>
-            <p>{element.budget}</p>
-            <button id={element.id} onClick={that.apply}>Apply</button>
-          </div>
+        </div>
         )
       }
     });
 
     return (
-      <div className="add">
-        <h2>Currently listed jobs</h2>
-        {allJobs}
+      <div className="list-view">
+        <h3 className="sub-heading" >Currently listed jobs</h3>
+          <div className="list">
+               {allJobs}
+          </div>
       </div>
     )
   }

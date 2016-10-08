@@ -33,12 +33,16 @@ const Add = React.createClass({
 
     return (
       <div className="add">
-        <h1>Welcome, Jimmy!</h1>
-        <div className="couriernav">
+        <div className="subnav">
           <a onClick={this.setView.bind(this,"jobslist")}>Jobs List</a>
           <a onClick={this.setView.bind(this,"myjobs")}>My Jobs</a>
         </div>
-        {view}
+          <div className="view">
+              <div className="container">
+                  <h1>Welcome, Jimmy!</h1>
+              {view}
+              </div>
+          </div>
       </div>
     )
   }
