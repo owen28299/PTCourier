@@ -1,2 +1,14 @@
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-$body-bg: #4D4F53;
+$body-bg: white;
+
+$brand-primary: #FFAA18;
+$brand-darken: #CC0000;
+
+$navbar-height: 70px;
+$navbar-default-bg: transparent;
+$navbar-default-link-color: $brand-primary;
+$navbar-default-link-hover-color: $brand-primary;
+
+$btn-default-color: $brand-primary;
+$btn-default-bg: transparent;
+$btn-default-border: $brand-primary;
