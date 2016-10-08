@@ -15,7 +15,7 @@ router.route('/')
     });
   })
   .post(function(req,res) {
-    JobFunctions.addJob(req.body.name, req.body.item, req.body.location, req.body.budget, req.body.time);
+    JobFunctions.addJob(req.body.client, req.body.item, req.body.item_location, req.body.item_location_geocode, req.body.delivery_location, req.body.delivery_location_geocode, req.body.budget, req.body.time);
 
     JobFunctions.getAll(function(jobs){
       res.send({
@@ -25,7 +25,7 @@ router.route('/')
     });
   })
   .put(function(req,res){
-    JobFunctions.applyToJob(req.body.id, req.body.name, req.body.time, req.body.offer);
+    JobFunctions.applyToJob(req.body.id, req.body.courier, req.body.offer, req.body.time);
 
     res.send({
       success : true,
