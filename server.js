@@ -7,7 +7,7 @@ const express    = require('express'),
       PORT       = process.env.PORT || 3000
       ;
 
-const api        = require('./routes/api'),
+const jobs       = require('./routes/jobs'),
       payment    = require('./routes/payment')
       ;
 
@@ -16,7 +16,7 @@ app
   .use(bodyParser.json())
   ;
 
-app.use('/api', api)
+app.use('/jobs', jobs)
    .use('/payment', payment);
 
 app.use(express.static(__dirname + "/public"));

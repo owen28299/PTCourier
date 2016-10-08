@@ -25985,7 +25985,47 @@
 	var Add = _react2.default.createClass({
 	  displayName: 'Add',
 	
+	  getInitialState: function getInitialState() {
+	    return {
+	      jobs: []
+	    };
+	  },
+	  componentDidMount: function componentDidMount() {
+	    var that = this;
+	
+	    var xhttp = new XMLHttpRequest();
+	    xhttp.addEventListener("load", function () {
+	      var jobs = JSON.parse(this.response).data;
+	      that.setState({ jobs: jobs });
+	    });
+	    xhttp.open("GET", "/jobs");
+	    xhttp.send();
+	  },
 	  render: function render() {
+	    console.log('jobs', this.state.jobs);
+	
+	    var allJobs = this.state.jobs.map(function (element) {
+	      return _react2.default.createElement(
+	        'div',
+	        { key: element.id },
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          element.name
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          element.time
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          element.budget
+	        )
+	      );
+	    });
+	
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'add' },
@@ -25998,7 +26038,8 @@
 	        'p',
 	        null,
 	        'Find, travel, earn'
-	      )
+	      ),
+	      allJobs
 	    );
 	  }
 	});
