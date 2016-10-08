@@ -13,8 +13,11 @@ const Header = React.createClass({
         if (path.indexOf('/client') != -1) {
             return (
                 <Nav pullRight>
+                    <LinkContainer to="/payments">
+                        <NavItem eventKey={3}>Client Payments</NavItem>
+                    </LinkContainer>
                     <LinkContainer to="/">
-                        <NavItem eventKey={1} >Client Log Out</NavItem>
+                        <NavItem eventKey={1} >Log Out</NavItem>
                     </LinkContainer>
                 </Nav>
             );
@@ -22,7 +25,7 @@ const Header = React.createClass({
             return (
                 <Nav pullRight>
                     <LinkContainer to="/">
-                        <NavItem eventKey={1} >Courier Log Out</NavItem>
+                        <NavItem eventKey={1} >Log Out</NavItem>
                     </LinkContainer>
                 </Nav>
             );
@@ -34,9 +37,6 @@ const Header = React.createClass({
                     </LinkContainer>
                     <LinkContainer to="/courier">
                         <NavItem eventKey={2}>Courier Login</NavItem>
-                    </LinkContainer>
-                    <LinkContainer to="/payments">
-                        <NavItem eventKey={3}>Client Payments</NavItem>
                     </LinkContainer>
                 </Nav>
             )
