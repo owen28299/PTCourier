@@ -3,9 +3,12 @@
 
 const express    = require('express'),
       bodyParser = require('body-parser'),
-      api        = require('./routes/api'),
       app        = express(),
       PORT       = process.env.PORT || 3000
+      ;
+
+const api        = require('./routes/api'),
+      payment    = require('./routes/payment')
       ;
 
 app
@@ -13,7 +16,8 @@ app
   .use(bodyParser.json())
   ;
 
-app.use('/api', api);
+app.use('/api', api)
+   .use('/payment', payment);
 
 app.use(express.static(__dirname + "/public"));
 
