@@ -1,7 +1,6 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
 
-const Add = React.createClass({
+const Dashboard = React.createClass({
   getInitialState : function(){
     return {
       jobs : []
@@ -20,27 +19,37 @@ const Add = React.createClass({
   },
   render : function(){
     var allJobs = this.state.jobs.map(function(element){
+      var applicants = element.applicants.map(function(applicant){
+        return (
+          <div key={applicant.id}>
+            <p>{applicant.name}</p>
+            <p>{applicant.offer}</p>
+            <p>{applicant.time}</p>
+            <button>Accept Applicant</button>
+          </div>
+        )
+      })
+
       return (
         <div key={element.id}>
-          <p>{element.client}</p>
+          <p>{element.name}</p>
           <p>{element.item}</p>
           <p>{element.item_location}</p>
           <p>{element.delivery_location}</p>
           <p>{element.time}</p>
           <p>{element.budget}</p>
-          <button>Apply</button>
+          {applicants}
         </div>
       )
     });
 
     return (
-      <div className="add">
-        <h1>For Couriers</h1>
-        <h2>Currently listed jobs</h2>
+      <div className="clientdashboard">
+        <h1>Client Dashboard</h1>
         {allJobs}
       </div>
     )
   }
 });
 
-module.exports = Add;
+module.exports = Dashboard;
