@@ -6,6 +6,8 @@ module.exports = {
       item : "A4 Batteries",
       item_location : "JB Hifi",
       delivery_location : "Melbourne Convention Centre",
+      item_location_geocode : { latitude: -37.8136, longitude: 144.9031},
+      delivery_location_geocode : { latitude: -37.8036, longitude: 144.9631},
       time : 3,
       budget : 50,
       status : "hiring",

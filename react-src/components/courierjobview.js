@@ -41,6 +41,7 @@ const JobView = React.createClass({
           <p>{element.item}</p>
           <p>{element.item_location}</p>
           <p>{element.delivery_location}</p>
+          <div>Insert live route here?</div>
           <p>{element.time}</p>
           <p>{element.budget}</p>
           <button>Mark Item Purchased</button>
