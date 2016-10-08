@@ -17,6 +17,8 @@ hr.brand {
 }
 
 .navbar-default {
+  border-bottom:1px solid $brand-primary;
+  margin: 10px 0 0 0;
   .navbar-brand {
     padding: 10px;
   }
@@ -42,4 +44,10 @@ hr.brand {
       }
     }
   }
+}
+
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: bottom center;
+  background-size: cover;
 }

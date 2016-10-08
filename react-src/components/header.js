@@ -10,19 +10,22 @@ import Logo from './partials/images.js';
 const Header = React.createClass({
     renderHeader: function() {
         const path = this.props.location.pathname;
-        if (path == '/client') {
+        if (path.indexOf('/client') != -1) {
             return (
                 <Nav pullRight>
+                    <LinkContainer to="/payments">
+                        <NavItem eventKey={3}>Client Payments</NavItem>
+                    </LinkContainer>
                     <LinkContainer to="/">
                         <NavItem eventKey={1} >Log Out</NavItem>
                     </LinkContainer>
                 </Nav>
             );
-        } else if (path === '/courier') {
+        } else if (path.indexOf('/courier') != -1) {
             return (
                 <Nav pullRight>
                     <LinkContainer to="/">
-                        <NavItem eventKey={1} >Courier Log Out</NavItem>
+                        <NavItem eventKey={1} >Log Out</NavItem>
                     </LinkContainer>
                 </Nav>
             );
@@ -34,9 +37,6 @@ const Header = React.createClass({
                     </LinkContainer>
                     <LinkContainer to="/courier">
                         <NavItem eventKey={2}>Courier Login</NavItem>
-                    </LinkContainer>
-                    <LinkContainer to="/payments">
-                        <NavItem eventKey={3}>Client Payments</NavItem>
                     </LinkContainer>
                 </Nav>
             )

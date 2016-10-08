@@ -22,12 +22,12 @@ module.exports = {
                 loader: ExtractTextPlugin.extract("style", "css!sass")
             },
             {
-                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-                loader: 'url-loader?limit=100000'
+                test: /\.(jpe?g|png|woff|woff2|eot|ttf|svg)$/,
+                loader: "file-loader?name=./public/theme/assets/images/[name].[ext]"
             }
         ]
     },
     plugins: [
-        new ExtractTextPlugin("./public/css/styles.css")
+        new ExtractTextPlugin("./public/theme/styles.css")
     ]
 };

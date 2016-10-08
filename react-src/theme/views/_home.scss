@@ -1,11 +1,30 @@
 .home {
   text-align: center;
+  border-bottom:10px solid $brand-primary;
 
   .container {
-    margin:50px auto;
 
-    .logo {
-      margin:30px auto;
+    .title {
+      margin: 30vh auto;
+
+      h1, h4 {
+        color: white;
+      }
+
+      div {
+        text-align: left;
+        padding: 20px;
+      }
+      div:last-of-type {
+        border-left:2px solid white;
+        text-align: left;
+      }
+
+      .btn {
+        margin:10px 0;
+        padding:10px 20px;
+        width: 200px;
+      }
     }
   }
 }
