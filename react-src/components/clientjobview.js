@@ -53,12 +53,12 @@ const ClientJobView = React.createClass({
         </div>
       )
     });
-
+      console.log(allJobs);
     return (
       <div className="add list-view">
-        <h3 className="sub-heading" >My Deliveries</h3>
+        <h3 className="sub-heading" >my deliveries</h3>
           <div className="list">
-              {allJobs}
+              {allJobs.length > 0 ? allJobs : 'No Jobs in Progress'}
           </div>
       </div>
     )

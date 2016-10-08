@@ -12,7 +12,7 @@ const GetAll = React.createClass({
                   <div className="row title">
                       <div className="col-md-7">
                           <h1>Welcome to Zap!</h1>
-                          <h4>Some tag line</h4>
+                          <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet justo et sollicitudin malesuada.</h4>
                       </div>
                       <div className="col-md-5">
                           <h4>Would you like to...</h4>

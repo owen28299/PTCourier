@@ -40,19 +40,21 @@ const PostJob = React.createClass({
   render : function(){
     return (
       <div className="postjob">
-          <h3 className="sub-heading">Post a Job</h3>
+          <h3 className="sub-heading">post a job</h3>
           <div className="form">
               <label>Name</label>
               <input
                   type="text"
                   value={this.state.client}
                   onChange={this.handleChange.bind(this, "client")}
+                  placeholder="..."
               />
               <label>Item</label>
               <input
                   type="text"
                   value={this.state.item}
                   onChange={this.handleChange.bind(this, "item")}
+                  placeholder="..."
               />
 
               <label>Item Location</label>
@@ -66,12 +68,14 @@ const PostJob = React.createClass({
                   type="text"
                   value={this.state.time}
                   onChange={this.handleChange.bind(this, "time")}
+                  placeholder="..."
               />
               <label>Budget</label>
               <input
                   type="text"
                   value={this.state.budget}
                   onChange={this.handleChange.bind(this, "budget")}
+                  placeholder="..."
               />
               <br />
               <button onClick={this.handleSubmit}>Submit</button>
