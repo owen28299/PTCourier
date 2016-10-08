@@ -37,31 +37,37 @@ const Get = React.createClass({
         <p>Name</p>
         <input
           type="text"
+          value={this.state.client}
           onChange={this.handleChange.bind(this, "client")}
         />
         <p>Item</p>
         <input
           type="text"
+          value={this.state.item}
           onChange={this.handleChange.bind(this, "item")}
         />
         <p>Item Location</p>
         <input
           type="text"
+          value={this.state.item_location}
           onChange={this.handleChange.bind(this, "item_location")}
         />
         <p>Delivery Location</p>
         <input
           type="text"
+          value={this.state.delivery_location}
           onChange={this.handleChange.bind(this, "delivery_location")}
         />
         <p>Time Limit</p>
         <input
           type="text"
+          value={this.state.time}
           onChange={this.handleChange.bind(this, "time")}
         />
         <p>Budget</p>
         <input
           type="text"
+          value={this.state.budget}
           onChange={this.handleChange.bind(this, "budget")}
         />
         <br />
