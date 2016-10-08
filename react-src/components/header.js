@@ -35,6 +35,9 @@ const Header = React.createClass({
                     <LinkContainer to="/courier">
                         <NavItem eventKey={2}>Courier Login</NavItem>
                     </LinkContainer>
+                    <LinkContainer to="/payments">
+                        <NavItem eventKey={3}>Client Payments</NavItem>
+                    </LinkContainer>
                 </Nav>
             )
         }
