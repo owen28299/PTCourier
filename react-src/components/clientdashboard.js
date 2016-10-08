@@ -35,6 +35,9 @@ const Dashboard = React.createClass({
     }));
 
   },
+  handleChangeView : function(){
+    this.props.setView("jobview");
+  },
   render : function(){
     var that = this;
 
@@ -66,13 +69,15 @@ const Dashboard = React.createClass({
           <p>{element.budget}</p>
           <p>{element.courier ? element.courier[0].name : null}</p>
           {applicants}
+          {element.courier ? <button onClick={that.handleChangeView}>View Job Progress</button> : null}
         </div>
       )
     });
 
     return (
       <div className="clientdashboard">
-        <h1>Client Dashboard</h1>
+        <h1>Welcome, Mark!</h1>
+        <h2>Dashboard</h2>
         {allJobs}
       </div>
     )

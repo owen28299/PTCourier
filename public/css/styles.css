@@ -5836,13 +5836,16 @@ hr.brand {
   padding: 10px 20px;
   border-radius: 5px;
   margin: 20px 15px; }
-  .navbar-default .navbar-nav > li a:hover {
+  .navbar-default .navbar-nav > li a:hover, .navbar-default .navbar-nav > li a:focus {
     color: white;
     background-color: #FFAA18; }
 
 .navbar-default .navbar-nav > li.active a {
   color: white;
   background-color: #FFAA18; }
+  .navbar-default .navbar-nav > li.active a:hover, .navbar-default .navbar-nav > li.active a:focus {
+    color: white;
+    background-color: #FFAA18; }
 
 .home {
   text-align: center; }

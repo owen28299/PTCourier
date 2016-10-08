@@ -1,51 +1,44 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 
+const ViewJobs = require('./viewjobs');
+const MyJobs = require('./courierjobview');
+
 const Add = React.createClass({
   getInitialState : function(){
     return {
-      jobs : []
+      view : "jobslist"
     }
   },
-  apply : function(event){
-    browserHistory.push("/apply/" + event.target.id)
-  },
-  componentDidMount : function(){
-    var that = this;
-
-    var xhttp = new XMLHttpRequest();
-    xhttp.addEventListener("load", function(){
-      var jobs = JSON.parse(this.response).data;
-      that.setState({jobs : jobs});
-    });
-    xhttp.open("GET", "/jobs");
-    xhttp.send();
+  setView : function(view){
+    this.setState({
+      view : view
+    })
   },
   render : function(){
-    var that = this;
+    var view = null;
 
-    var allJobs = this.state.jobs.map(function(element){
-      if(element.status === "hiring"){
-        return (
-          <div key={element.id}>
-            <p>{element.client}</p>
-            <p>{element.item}</p>
-            <p>{element.item_location}</p>
-            <p>{element.delivery_location}</p>
-            <p>{element.time}</p>
-            <p>{element.budget}</p>
-            <button id={element.id} onClick={that.apply}>Apply</button>
-          </div>
-        )
-      }
+    switch(this.state.view){
+      case "jobslist":
+        view = <ViewJobs />;
+        break;
 
-    });
+      case "myjobs":
+        view = <MyJobs />;
+        break;
+
+      default:
+        view = <ViewJobs />;
+    }
 
     return (
       <div className="add">
-        <h1>For Couriers</h1>
-        <h2>Currently listed jobs</h2>
-        {allJobs}
+        <h1>Welcome, Jimmy!</h1>
+        <div className="couriernav">
+          <a onClick={this.setView.bind(this,"jobslist")}>Jobs List</a>
+          <a onClick={this.setView.bind(this,"myjobs")}>My Jobs</a>
+        </div>
+        {view}
       </div>
     )
   }
