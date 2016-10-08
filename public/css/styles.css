@@ -5840,8 +5840,9 @@ hr.brand {
     color: white;
     background-color: #FFAA18; }
 
-.navbar-default.active {
-  color: blue; }
+.navbar-default .navbar-nav > li.active a {
+  color: white;
+  background-color: #FFAA18; }
 
 .home {
   text-align: center; }

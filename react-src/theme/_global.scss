@@ -31,9 +31,11 @@ hr.brand {
         background-color: $brand-primary;
       }
     }
-  }
 
-  &.active {
-    color:blue;
+
+    &.active a {
+      color: white;
+      background-color: $brand-primary;
+    }
   }
 }
