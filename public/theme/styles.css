@@ -1513,10 +1513,10 @@ pre {
       width: 750px; } }
   @media (min-width: 992px) {
     .container {
-      width: 970px; } }
+      width: 1000px; } }
   @media (min-width: 1200px) {
     .container {
-      width: 1170px; } }
+      width: 1000px; } }
 
 .container-fluid {
   margin-right: auto;
@@ -5814,6 +5814,14 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+*:focus {
+  outline: none; }
+
+a {
+  cursor: pointer; }
+  a:hover {
+    text-decoration: none; }
+
 .logo {
   fill: #FFAA18;
   filter: drop-shadow(2px 2px 5px 0px rgba(0, 0, 0, 0.2)); }
@@ -5827,6 +5835,17 @@ hr.brand {
 .header {
   height: auto;
   padding: 10px 20px; }
+
+.subnav {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center; }
+  .subnav a {
+    display: inline;
+    padding: 0 10px;
+    border-left: 1px solid #FFAA18; }
+    .subnav a:first-of-type {
+      border-left: 0px solid #FFAA18; }
 
 .navbar-default {
   border-bottom: 1px solid #FFAA18;
@@ -5853,9 +5872,29 @@ hr.brand {
   background-position: bottom center;
   background-size: cover; }
 
+.view {
+  background-color: #fbfbfb;
+  border-bottom: 10px solid #FFAA18;
+  -webkit-box-shadow: inset -1px 1px 5px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset -1px 1px 5px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: inset -1px 1px 5px 0px rgba(0, 0, 0, 0.3);
+  padding: 30px 0; }
+
+input,
+select,
+textarea {
+  min-height: 40px;
+  width: 100%;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  border-bottom: 2px solid #333333;
+  padding: 10px;
+  display: block;
+  margin-bottom: 10px; }
+
 .home {
-  text-align: center;
-  border-bottom: 10px solid #FFAA18; }
+  text-align: center; }
   .home .container .title {
     margin: 30vh auto; }
     .home .container .title h1, .home .container .title h4 {

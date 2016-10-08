@@ -38,12 +38,16 @@ const Get = React.createClass({
 
     return (
       <div className="get">
-        <div className="couriernav">
+        <div className="subnav">
           <a onClick={this.setView.bind(this,"dashboard")}>View DashBoard</a>
           <a onClick={this.setView.bind(this,"postjob")}>Post Job</a>
           <a onClick={this.setView.bind(this,"jobview")}>Jobs in Progress</a>
         </div>
-        {view}
+       <div className="view">
+            <div className="container">
+            {view}
+            </div>
+       </div>
       </div>
     )
   }

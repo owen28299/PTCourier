@@ -1,8 +1,18 @@
+*:focus {
+  outline: none;
+}
+
+a {
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .logo {
   fill: $brand-primary;
   filter: drop-shadow( 2px 2px 5px 0px rgba(0, 0, 0, 0.2) );
 }
-
 
 hr.brand {
   border:1px solid $brand-primary;
@@ -14,6 +24,21 @@ hr.brand {
 .header {
   height:auto;
   padding:10px 20px;
+}
+
+.subnav {
+  width:100%;
+  padding:10px 0;
+  text-align: center;
+
+  a {
+    display: inline;
+    padding:0 10px;
+    border-left:1px solid $brand-primary;
+    &:first-of-type {
+      border-left:0px solid $brand-primary;
+    }
+  }
 }
 
 .navbar-default {
@@ -50,4 +75,29 @@ hr.brand {
   background-attachment: fixed;
   background-position: bottom center;
   background-size: cover;
+}
+
+.view {
+  background-color: #fbfbfb;
+  border-bottom:10px solid $brand-primary;
+  -webkit-box-shadow: inset -1px 1px 5px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: inset -1px 1px 5px 0px rgba(0,0,0,0.3);
+  box-shadow: inset -1px 1px 5px 0px rgba(0,0,0,0.3);
+  padding:30px 0;
+}
+
+// Forms
+
+input,
+select,
+textarea {
+  min-height: 40px;
+  width:100%;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  border-bottom: 2px solid #333333;
+  padding:10px;
+  display:block;
+  margin-bottom: 10px;
 }
