@@ -109,7 +109,7 @@ var Map = React.createClass({
 
     render: function () {
         return (
-            <div className="container">
+            <div>
 
                 <div className="row">
                     <div className="col-sm-12">
@@ -139,7 +139,7 @@ var Map = React.createClass({
                 <div className="row">
                     <div className="col-sm-12">
 
-                        {this.state.isGeocodingError ? <p className="bg-danger">Address not found.</p> : <p className="bg-info">{this.state.foundAddress}</p>}
+                    {this.state.isGeocodingError ? <p className="bg-danger">Address not found.</p> : <p className="bg-info">{this.state.foundAddress}</p>}
 
                         <div className="map" ref={this.setMapElementReference}></div>
 

@@ -49,9 +49,9 @@ const JobView = React.createClass({
     });
 
     return (
-      <div className="add">
-        <h2>My Jobs</h2>
-        {allJobs}
+      <div className="jobs">
+          <h3 className="sub-heading">My Jobs</h3>
+      {allJobs}
       </div>
     )
   }

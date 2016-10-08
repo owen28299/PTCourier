@@ -36,8 +36,6 @@ const Get = React.createClass({
         view = <PostJob />
     }
 
-
-
       return (
       <div className="get">
         <div className="subnav">

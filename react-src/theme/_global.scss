@@ -41,11 +41,23 @@ hr.brand {
   }
 }
 
+h3.sub-heading {
+  text-align: right;
+  color: #d5d5d5;
+}
+
 .navbar-default {
-  border-bottom:1px solid $brand-primary;
+  border-bottom:2px solid $brand-primary;
   margin: 10px 0 0 0;
   .navbar-brand {
     padding: 10px;
+    @media only screen and (max-width : 1000px) {
+      float:none;
+    }
+    svg {
+      margin: 0 auto;
+      display: block;
+    }
   }
   .navbar-nav > li {
     a {
@@ -80,13 +92,59 @@ hr.brand {
 .view {
   background-color: #fbfbfb;
   border-bottom:10px solid $brand-primary;
-  -webkit-box-shadow: inset -1px 1px 5px 0px rgba(0,0,0,0.3);
-  -moz-box-shadow: inset -1px 1px 5px 0px rgba(0,0,0,0.3);
-  box-shadow: inset -1px 1px 5px 0px rgba(0,0,0,0.3);
+  -webkit-box-shadow: inset -1px 1px 1px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: inset -1px 1px 1px 0px rgba(0,0,0,0.3);
+  box-shadow: inset -1px 1px 1px 0px rgba(0,0,0,0.3);
   padding:30px 0;
 }
 
+.list-view {
+
+  button {
+    display: block;
+    width:100%;
+  }
+
+  .list {
+    background-color: white;
+    border-top:2px solid #333333;
+    padding:10px;
+    -webkit-box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.3);
+    box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.3);
+  }
+
+  .app-list {
+    margin:15px 0;
+    padding:10px 0;
+    border-top:1px solid #eeeeee;
+  }
+
+}
+
+.btn-default {
+  &:hover {
+    color: white;
+    background-color: $brand-primary;
+  }
+}
+
 // Forms
+.form {
+  background-color: white;
+  border-top:2px solid #333333;
+  -webkit-box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.3);
+  box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.3);
+  width:100%;
+  margin:0 auto;
+  padding:10px 40px;
+
+  h3 {
+    text-align: center;
+    margin:20px 0;
+  }
+}
 
 input,
 select,
@@ -100,4 +158,19 @@ textarea {
   padding:10px;
   display:block;
   margin-bottom: 10px;
+}
+
+button {
+  @extend .btn;
+  @extend .btn-default;
+}
+
+label {
+  color: #707070;
+}
+
+// table
+
+table > tbody > tr > td {
+  vertical-align: baseline;
 }

@@ -13,7 +13,7 @@ const Header = React.createClass({
         if (path.indexOf('/client') != -1) {
             return (
                 <Nav pullRight>
-                    <LinkContainer to="/payments">
+                    <LinkContainer to="/client/payments">
                         <NavItem eventKey={3}>Client Payments</NavItem>
                     </LinkContainer>
                     <LinkContainer to="/">

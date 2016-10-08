@@ -21,7 +21,7 @@ ReactDOM.render(
       <Route path="courier/apply/:id" component={Apply}></Route>
       <Route path="client" component={Client}></Route>
       <Route path="clientdash" component={DashboardClient}></Route>
-      <Route path="payments" component={Payment}></Route>
+      <Route path="client/payments" component={Payment}></Route>
       <Route path="*" component={NotFound}></Route>
     </Route>
   </Router>,

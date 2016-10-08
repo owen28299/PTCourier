@@ -44,41 +44,67 @@ const Dashboard = React.createClass({
     var allJobs = this.state.jobs.map(function(element){
       var applicants = element.applicants.map(function(applicant){
         return (
-          <div key={applicant.id}>
-            <p>{applicant.name}</p>
-            <p>{applicant.offer}</p>
-            <p>{applicant.time}</p>
-            <button
-              data-appid={applicant.id}
-              data-jobid={element.id}
-              onClick={that.handleAccept}
-            >
-              Accept Applicant
-            </button>
+          <div className="app-list" key={applicant.id}>
+            <div className="row">
+                <div className="col-md-3">
+                    <p><b>Applicant Name: </b>{applicant.name}</p>
+                </div>
+                <div className="col-md-3">
+                    <p><b>Offer: </b>{applicant.offer}</p>
+                </div>
+                <div className="col-md-3">
+                    <p><b>Estimated Time: </b>{applicant.time}</p>
+                </div>
+                <div className="col-md-3">
+                    <button
+                        data-appid={applicant.id}
+                        data-jobid={element.id}
+                        onClick={that.handleAccept}>
+                        Accept Applicant
+                    </button>
+                </div>
+            </div>
           </div>
         )
-      })
+      });
 
       return (
         <div key={element.id}>
-          <p>{element.name}</p>
-          <p>{element.item}</p>
-          <p>{element.item_location}</p>
-          <p>{element.delivery_location}</p>
-          <p>{element.time}</p>
-          <p>{element.budget}</p>
-          <p>{element.courier ? element.courier[0].name : null}</p>
+            <div className="row">
+                <div className="col-md-3">
+                    <p><b>Name:</b> {element.client}</p>
+                    <p><b>Delivery Location:</b> {element.delivery_location}</p>
+                </div>
+                <div className="col-md-3">
+                    <p><b>Product:</b> {element.item}</p>
+                    <p><b>Product Location:</b> {element.item_location}</p>
+
+                </div>
+                <div className="col-md-3">
+                    <p><b>Time Frame:</b> {element.time}</p>
+                    <p><b>Budget:</b> {element.budget}</p>
+                </div>
+                <div className="col-md-3">
+                    <p><b>Time Frame:</b> {element.time}</p>
+                    <p><b>Budget:</b> {element.budget}</p>
+                </div>
+            </div>
+            <div>
+                <p>{element.courier ? element.courier[0].name : null}</p>
           {applicants}
           {element.courier ? <button onClick={that.handleChangeView}>View Job Progress</button> : null}
+            </div>
         </div>
       )
     });
 
     return (
-      <div className="clientdashboard">
+      <div className="clientdashboard list-view">
         <h1>Welcome, Mark!</h1>
-        <h2>Dashboard</h2>
-        {allJobs}
+          <h3 className="sub-heading" >Dashboard</h3>
+          <div className="list">
+              {allJobs}
+          </div>
       </div>
     )
   }
