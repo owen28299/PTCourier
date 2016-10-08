@@ -6,7 +6,8 @@ const Header   = require('./components/header'),
       Home     = require('./components/home'),
       Client   = require('./components/client'),
       Courier  = require('./components/courier'),
-      NotFound = require('./components/404')
+      NotFound = require('./components/404'),
+      Payment = require("./components/payment")
       ;
 
 ReactDOM.render(
@@ -15,6 +16,7 @@ ReactDOM.render(
       <IndexRoute component={Home}></IndexRoute>
       <Route path="courier" component={Courier}></Route>
       <Route path="client" component={Client}></Route>
+      <Route path="payments" component={Payment}></Route>
       <Route path="*" component={NotFound}></Route>
     </Route>
   </Router>,
