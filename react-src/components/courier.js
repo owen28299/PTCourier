@@ -19,8 +19,6 @@ const Add = React.createClass({
     xhttp.send();
   },
   render : function(){
-    console.log('jobs', this.state.jobs);
-
     var allJobs = this.state.jobs.map(function(element){
       return (
         <div key={element.id}>
