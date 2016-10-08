@@ -5909,3 +5909,7 @@ textarea {
       margin: 10px 0;
       padding: 10px 20px;
       width: 200px; }
+
+.map {
+  height: 300px;
+  width: 300px; }

@@ -36,7 +36,9 @@ const Get = React.createClass({
         view = <PostJob />
     }
 
-    return (
+
+
+      return (
       <div className="get">
         <div className="subnav">
           <a onClick={this.setView.bind(this,"dashboard")}>View DashBoard</a>
