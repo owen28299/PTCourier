@@ -73,11 +73,12 @@ const Application = React.createClass({
                 <p>Budget : {element.budget}</p>
                 <p>Time Limit (hours) : {element.time}</p>
             </div>
-
-            <h4>Getting to the goods</h4>
-            <iframe className="map-iframe" src={courierToItemUrl}></iframe>
-            <h4>Getting to the purchaser</h4>
-            <iframe className="map-iframe" src={plannerUrl}></iframe>
+            <div className="row">
+                <h4 className="overlap-map">Getting to the goods</h4>
+                <iframe className="map-iframe" src={courierToItemUrl}></iframe>
+                <h4 className="overlap-map">Getting to the purchaser</h4>
+                <iframe className="map-iframe" src={plannerUrl}></iframe>
+            </div>
         </div>
       )
     });

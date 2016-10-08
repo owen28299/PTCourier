@@ -63,9 +63,9 @@ const Add = React.createClass({
            </div>
             <div className="row">
                 <div className="col-sm-12">
-                    <h3>Getting to the goods</h3>
+                    <h3 className="overlap-map">Getting to the goods</h3>
                     <iframe className="map-iframe" src={courierToItemUrl}></iframe>
-                    <h3>Getting to the purchaser</h3>
+                    <h3 className="overlap-map">Getting to the purchaser</h3>
                     <iframe className="map-iframe" src={plannerUrl}></iframe>
                     <button id={element.id} onClick={that.apply}>Apply</button>
                 </div>
