@@ -181,7 +181,7 @@ const Dashboard = React.createClass({
                 </div>
             </div>
             <div>
-                <p>{element.courier ? element.courier[0].name + "has been paid " + element.budget.toFixed(2) + " AUD to deliver your product." : null}</p>
+                <p>{element.courier ? element.courier[0].name + " has been paid " + element.budget.toFixed(2) + " AUD to deliver your product." : null}</p>
           {applicants}
           {element.courier ? <button onClick={that.handleChangeView}>View Job Progress</button> : null}
             </div>
