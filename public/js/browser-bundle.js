@@ -25877,6 +25877,21 @@
 	var Get = _react2.default.createClass({
 	  displayName: 'Get',
 	
+	  getInitialState: function getInitialState() {
+	    return {
+	      name: "",
+	      item: "",
+	      location: "",
+	      time: "",
+	      budget: ""
+	    };
+	  },
+	  handleChange: function handleChange(field, event) {
+	    var nextState = {};
+	    nextState[field] = event.target.value;
+	
+	    this.setState(nextState);
+	  },
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
@@ -25890,6 +25905,62 @@
 	        'p',
 	        null,
 	        'Instant delivery at your fingertips'
+	      ),
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'Post a Job'
+	      ),
+	      _react2.default.createElement(
+	        'p',
+	        null,
+	        'Name'
+	      ),
+	      _react2.default.createElement('input', {
+	        type: 'text',
+	        onChange: this.handleChange.bind(this, "name")
+	      }),
+	      _react2.default.createElement(
+	        'p',
+	        null,
+	        'Item'
+	      ),
+	      _react2.default.createElement('input', {
+	        type: 'text',
+	        onChange: this.handleChange.bind(this, "item")
+	      }),
+	      _react2.default.createElement(
+	        'p',
+	        null,
+	        'Location'
+	      ),
+	      _react2.default.createElement('input', {
+	        type: 'text',
+	        onChange: this.handleChange.bind(this, "location")
+	      }),
+	      _react2.default.createElement(
+	        'p',
+	        null,
+	        'Time Limit'
+	      ),
+	      _react2.default.createElement('input', {
+	        type: 'text',
+	        onChange: this.handleChange.bind(this, "time")
+	      }),
+	      _react2.default.createElement(
+	        'p',
+	        null,
+	        'Budget'
+	      ),
+	      _react2.default.createElement('input', {
+	        type: 'text',
+	        onChange: this.handleChange.bind(this, "budget")
+	      }),
+	      _react2.default.createElement('br', null),
+	      _react2.default.createElement(
+	        'button',
+	        null,
+	        'Submit'
 	      )
 	    );
 	  }
