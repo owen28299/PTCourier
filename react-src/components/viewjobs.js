@@ -25,6 +25,10 @@ const Add = React.createClass({
     var that = this;
 
     var allJobs = this.state.jobs.map(function(element){
+      var plannerUrl = "http://54.206.123.83:10080/?module=planner&fromPlace="
+          + element.item_location_geocode.latitude + "%2C" + element.item_location_geocode.longitude + "&toPlace="
+          + element.delivery_location_geocode.latitude + "%2C" + element.delivery_location_geocode.longitude
+          + "&time=9%3A19am&date=10-09-2016&mode=TRANSIT%2CWALK&maxWalkDistance=804.672&arriveBy=true&wheelchair=false&locale=en&startTransitStopId=4_19842&itinIndex=0";
       if(element.status === "hiring"){
         return (
           <div key={element.id}>
@@ -32,6 +36,9 @@ const Add = React.createClass({
             <p>{element.item}</p>
             <p>{element.item_location}</p>
             <p>{element.delivery_location}</p>
+            <div>
+              <iframe className="map-iframe" src={plannerUrl}></iframe>
+            </div>
             <p>{element.time}</p>
             <p>{element.budget}</p>
             <button id={element.id} onClick={that.apply}>Apply</button>
