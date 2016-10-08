@@ -6,7 +6,8 @@ const express    = require('express'),
       ;
 
 const jobs       = require('./routes/jobs'),
-      payment    = require('./routes/payment')
+      payment    = require('./routes/payment'),
+      couriers   = require('./routes/couriers')
       ;
 
 app
@@ -15,7 +16,9 @@ app
   ;
 
 app.use('/jobs', jobs)
-   .use('/payment', payment);
+   .use('/payment', payment)
+   .use('/couriers', couriers)
+   ;
 
 app.use(express.static(__dirname + "/public"));
 
