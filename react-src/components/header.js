@@ -9,8 +9,8 @@ const Header = React.createClass({
       <div className="header">
         <h1>PT Courier App</h1>
         <Link to="/">Home</Link>
-        <Link to="/get">GET</Link>
-        <Link to="/add">ADD</Link>
+        <Link to="/courier">For Couriers</Link>
+        <Link to="/client">For Clients</Link>
         {this.props.children}
       </div>
     )

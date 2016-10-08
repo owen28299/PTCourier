@@ -3,18 +3,18 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory, Link } from 'react-router';
 
 const Header   = require('./components/header'),
-      GetAll   = require('./components/getall'),
-      Get      = require('./components/get'),
-      Add      = require('./components/add'),
+      Home     = require('./components/home'),
+      Client   = require('./components/client'),
+      Courier  = require('./components/courier'),
       NotFound = require('./components/404')
       ;
 
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path="/" component={Header}>
-      <IndexRoute component={GetAll}></IndexRoute>
-      <Route path="get" component={Get}></Route>
-      <Route path="add" component={Add}></Route>
+      <IndexRoute component={Home}></IndexRoute>
+      <Route path="courier" component={Courier}></Route>
+      <Route path="client" component={Client}></Route>
       <Route path="*" component={NotFound}></Route>
     </Route>
   </Router>,
