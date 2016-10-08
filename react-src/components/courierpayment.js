@@ -1,11 +1,11 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 
-const Payment = React.createClass({
+const CourierPayment = React.createClass({
     getInitialState : function(){
 
         return {
-            number : "5123450000000008",
+            number : "5123450000000016",
             securityCode : "100",
             expiryMonth : "05",
             expiryYear : "17",
@@ -22,7 +22,6 @@ const Payment = React.createClass({
 
     },
     pay : function(){
-        console.log("Hey");
         PaymentSession.configure({
             fields: {
                 // ATTACH HOSTED FIELDS TO YOUR PAYMENT PAGE FOR A CREDIT CARD
@@ -147,4 +146,4 @@ const Payment = React.createClass({
 
 });
 
-module.exports = Payment;
+module.exports = CourierPayment;
