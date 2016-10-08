@@ -4,7 +4,8 @@ const Payment = require('./payment');
 const Dashboard = React.createClass({
   getInitialState : function(){
     return {
-      jobs : []
+      jobs : [],
+      offer : 0.0
     }
   },
   componentDidMount : function(){
@@ -19,6 +20,7 @@ const Dashboard = React.createClass({
     xhttp.send();
   },
     pay : function(){
+      var offer = this.state.offer;
         PaymentSession.configure({
             fields: {
                 // ATTACH HOSTED FIELDS TO YOUR PAYMENT PAGE FOR A CREDIT CARD
@@ -92,9 +94,9 @@ const Dashboard = React.createClass({
                                 console.log("Security code invalid.");
                             }
                         } else if ("request_timeout" == response.status)  {
-                            console.log("Session update failed with request timeout: " + response.errors.message);
+                            console.log("Session update failed with request timeout: ");
                         } else if ("system_error" == response.status)  {
-                            console.log("Session update failed with system error: " + response.errors.message);
+                            console.log("Session update failed with system error: ");
                         }
                     } else {
                         console.log("Session update failed: " + response);
@@ -102,7 +104,7 @@ const Dashboard = React.createClass({
                 }
             },
             order: {
-                amount: 10.00,
+                amount: offer,
                 currency: "AUD"
             }
         });
@@ -133,6 +135,7 @@ const Dashboard = React.createClass({
     var payment = <Payment />
     var allJobs = this.state.jobs.map(function(element){
       var applicants = element.applicants.map(function(applicant){
+          that.state.offer = applicant.offer.toFixed(2);
         return (
           <div className="app-list" key={applicant.id}>
             <div className="row">
@@ -140,10 +143,10 @@ const Dashboard = React.createClass({
                     <p><b>Applicant Name: </b>{applicant.name}</p>
                 </div>
                 <div className="col-md-3">
-                    <p><b>Offer: </b>{applicant.offer}</p>
+                    <p><b>Offer: </b>{applicant.offer.toFixed(2)} AUD</p>
                 </div>
                 <div className="col-md-3">
-                    <p><b>Estimated Time: </b>{applicant.time}</p>
+                    <p><b>Estimated Time: </b>{applicant.time*60} minutes</p>
                 </div>
                 <div className="col-md-3">
                     <button
@@ -173,16 +176,12 @@ const Dashboard = React.createClass({
 
                 </div>
                 <div className="col-md-3">
-                    <p><b>Time Frame:</b> {element.time}</p>
-                    <p><b>Budget:</b> {element.budget}</p>
-                </div>
-                <div className="col-md-3">
-                    <p><b>Time Frame:</b> {element.time}</p>
-                    <p><b>Budget:</b> {element.budget}</p>
+                    <p><b>Time Frame:</b> {element.time*60} minutes </p>
+                    <p><b>Budget:</b> {element.budget.toFixed(2)}</p>
                 </div>
             </div>
             <div>
-                <p>{element.courier ? element.courier[0].name : null}</p>
+                <p>{element.courier ? element.courier[0].name + "has been paid " + element.budget.toFixed(2) + " AUD to deliver your product." : null}</p>
           {applicants}
           {element.courier ? <button onClick={that.handleChangeView}>View Job Progress</button> : null}
             </div>
