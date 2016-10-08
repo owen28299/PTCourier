@@ -62,7 +62,6 @@
 	    GetAll = __webpack_require__(223),
 	    Get = __webpack_require__(224),
 	    Add = __webpack_require__(225),
-	    Edit = __webpack_require__(226),
 	    NotFound = __webpack_require__(227);
 	
 	_reactDom2.default.render(_react2.default.createElement(
@@ -74,7 +73,6 @@
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: GetAll }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'get', component: Get }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'add', component: Add }),
-	    _react2.default.createElement(_reactRouter.Route, { path: 'edit/:id', component: Edit }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '*', component: NotFound })
 	  )
 	), document.getElementById('content'));
@@ -25767,22 +25765,22 @@
 	      _react2.default.createElement(
 	        'h1',
 	        null,
-	        'Movie Review App'
+	        'PT Courier App'
 	      ),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
 	        { to: '/' },
-	        'Get All Reviews'
+	        'Home'
 	      ),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
 	        { to: '/get' },
-	        'Search Reviews'
+	        'GET'
 	      ),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
 	        { to: '/add' },
-	        'Add a Review'
+	        'ADD'
 	      ),
 	      this.props.children
 	    );
@@ -25808,63 +25806,15 @@
 	var GetAll = _react2.default.createClass({
 	  displayName: 'GetAll',
 	
-	  getInitialState: function getInitialState() {
-	    return {
-	      reviews: []
-	    };
-	  },
-	  componentDidMount: function componentDidMount() {
-	    var that = this;
-	
-	    var getReq = new XMLHttpRequest();
-	    getReq.addEventListener("load", function () {
-	      that.setState({
-	        reviews: JSON.parse(this.response).data
-	      });
-	    });
-	    getReq.open("GET", "/api");
-	    getReq.send();
-	  },
-	  redirect: function redirect(id) {
-	    _reactRouter.browserHistory.push("/edit/" + id);
-	  },
 	  render: function render() {
-	    var that = this;
-	
-	    var reviews = this.state.reviews.map(function (element) {
-	
-	      if (element) {
-	        return _react2.default.createElement(
-	          'div',
-	          { key: element.id },
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            element.name
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            element.rating
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: that.redirect.bind(that, element.id) },
-	            'Edit'
-	          )
-	        );
-	      }
-	    });
-	
 	    return _react2.default.createElement(
 	      'div',
-	      { className: 'getall' },
+	      { className: 'all-jobs' },
 	      _react2.default.createElement(
 	        'h1',
 	        null,
-	        'All Reviews'
-	      ),
-	      reviews
+	        'All Jobs'
+	      )
 	    );
 	  }
 	});
@@ -25888,78 +25838,15 @@
 	var Get = _react2.default.createClass({
 	  displayName: 'Get',
 	
-	  getInitialState: function getInitialState() {
-	    return {
-	      query: "",
-	      results: []
-	    };
-	  },
-	  handleChange: function handleChange(event) {
-	    this.setState({
-	      query: event.target.value
-	    });
-	
-	    var that = this;
-	
-	    var getReq = new XMLHttpRequest();
-	    getReq.addEventListener("load", function () {
-	      that.setState({
-	        results: JSON.parse(this.response).results
-	      });
-	    });
-	    getReq.open("GET", "/api/" + event.target.value);
-	    getReq.send();
-	  },
-	
-	  redirect: function redirect(id) {
-	    _reactRouter.browserHistory.push("/edit/" + id);
-	  },
 	  render: function render() {
-	    var results = null;
-	    var that = this;
-	
-	    if (this.state.results && this.state.results.length > 0) {
-	      results = this.state.results.map(function (element) {
-	        return _react2.default.createElement(
-	          'div',
-	          { key: element.id },
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            element.name
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            element.rating
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: that.redirect.bind(that, element.id) },
-	            'Edit Review'
-	          )
-	        );
-	      });
-	    }
-	
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'get' },
 	      _react2.default.createElement(
 	        'h1',
 	        null,
-	        'Review Search'
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        'Search movie by name'
-	      ),
-	      _react2.default.createElement('input', {
-	        value: this.state.query,
-	        onChange: this.handleChange
-	      }),
-	      results
+	        'GET'
+	      )
 	    );
 	  }
 	});
@@ -25983,38 +25870,6 @@
 	var Add = _react2.default.createClass({
 	  displayName: 'Add',
 	
-	  getInitialState: function getInitialState() {
-	    return {
-	      title: "",
-	      rating: ""
-	    };
-	  },
-	
-	  handleChange: function handleChange(field, event) {
-	    var nextState = {};
-	    nextState[field] = event.target.value;
-	
-	    this.setState(nextState);
-	  },
-	
-	  handleSubmit: function handleSubmit() {
-	    var that = this;
-	
-	    var xmlhttp = new XMLHttpRequest();
-	    xmlhttp.addEventListener("load", function () {
-	      var response = JSON.parse(this.response);
-	
-	      _reactRouter.browserHistory.push("/");
-	    });
-	
-	    xmlhttp.open("POST", "/api");
-	    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-	    xmlhttp.send(JSON.stringify({
-	      name: this.state.title,
-	      rating: this.state.rating
-	    }));
-	  },
-	
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
@@ -26023,36 +25878,6 @@
 	        'h1',
 	        null,
 	        'Add'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'addContent' },
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Movie Title'
-	        ),
-	        _react2.default.createElement('input', {
-	          type: 'text',
-	          value: this.state.title,
-	          onChange: this.handleChange.bind(this, "title")
-	        }),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Rating'
-	        ),
-	        _react2.default.createElement('input', {
-	          type: 'integer',
-	          value: this.state.rating,
-	          onChange: this.handleChange.bind(this, "rating")
-	        }),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: this.handleSubmit },
-	          'Submit'
-	        ),
-	        _react2.default.createElement('br', null)
 	      )
 	    );
 	  }
@@ -26061,128 +25886,7 @@
 	module.exports = Add;
 
 /***/ },
-/* 226 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(159);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Edit = _react2.default.createClass({
-	  displayName: 'Edit',
-	
-	  getInitialState: function getInitialState() {
-	    return {
-	      id: this.props.params.id,
-	      title: "",
-	      rating: ""
-	    };
-	  },
-	  componentDidMount: function componentDidMount() {
-	    var that = this;
-	
-	    var getReq = new XMLHttpRequest();
-	    getReq.addEventListener("load", function () {
-	      var result = JSON.parse(this.response).result;
-	
-	      that.setState({
-	        title: result[0].name,
-	        rating: result[0].rating
-	      });
-	    });
-	    getReq.open("GET", "/api/id/" + this.props.params.id);
-	    getReq.send();
-	  },
-	  handleChange: function handleChange(field, event) {
-	    var nextState = {};
-	    nextState[field] = event.target.value;
-	
-	    this.setState(nextState);
-	  },
-	  handleEdit: function handleEdit() {
-	    var that = this;
-	
-	    var xmlhttp = new XMLHttpRequest();
-	    xmlhttp.addEventListener("load", function () {
-	      if (JSON.parse(this.response).success === true) {
-	        _reactRouter.browserHistory.push("/");
-	      }
-	    });
-	
-	    xmlhttp.open("PUT", "/api");
-	    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-	    xmlhttp.send(JSON.stringify({
-	      id: this.state.id,
-	      name: this.state.title,
-	      rating: this.state.rating
-	    }));
-	  },
-	  handleDelete: function handleDelete() {
-	    var that = this;
-	
-	    var xmlhttp = new XMLHttpRequest();
-	    xmlhttp.addEventListener("load", function () {
-	      if (JSON.parse(this.response).success === true) {
-	        _reactRouter.browserHistory.push("/");
-	      }
-	    });
-	
-	    xmlhttp.open("DELETE", "/api");
-	    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-	    xmlhttp.send(JSON.stringify({
-	      id: this.state.id
-	    }));
-	  },
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'Edit' },
-	      _react2.default.createElement(
-	        'h1',
-	        null,
-	        'Edit Movie Review'
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        'New Title'
-	      ),
-	      _react2.default.createElement('input', {
-	        value: this.state.title,
-	        onChange: this.handleChange.bind(this, "title")
-	      }),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        'New Rating'
-	      ),
-	      _react2.default.createElement('input', {
-	        value: this.state.rating,
-	        onChange: this.handleChange.bind(this, "rating")
-	      }),
-	      _react2.default.createElement(
-	        'button',
-	        { onClick: this.handleEdit },
-	        'Save Changes'
-	      ),
-	      _react2.default.createElement(
-	        'button',
-	        { onClick: this.handleDelete },
-	        'Delete Review'
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = Edit;
-
-/***/ },
+/* 226 */,
 /* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
