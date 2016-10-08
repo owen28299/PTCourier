@@ -10,8 +10,7 @@ const Header      = require('./components/header'),
       DashboardClient   = require('./components/clientdashboard'),
       Courier     = require('./components/courier'),
       NotFound    = require('./components/404'),
-      Apply       = require('./components/apply')
-      ;
+      Apply       = require('./components/apply');
 
 ReactDOM.render(
   <Router history={browserHistory}>
@@ -25,4 +24,4 @@ ReactDOM.render(
     </Route>
   </Router>,
   document.getElementById('content')
-)
+);
