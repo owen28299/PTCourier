@@ -13,11 +13,6 @@ html {
 body {
   margin: 0; }
 
-
-#map {
-  height: 300px;
-  width: 300px;
-}
 article,
 aside,
 details,
@@ -5855,3 +5850,7 @@ hr.brand {
     margin: 50px auto; }
     .home .container .logo {
       margin: 30px auto; }
+
+.map {
+  height: 300px;
+  width: 300px; }

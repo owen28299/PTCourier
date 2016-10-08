@@ -1,6 +1,9 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 
+
+const Map  = require('./partials/map');
+
 const Get = React.createClass({
   getInitialState : function(){
     return {
@@ -10,8 +13,11 @@ const Get = React.createClass({
       delivery_location : "",
       time : "",
       budget : "",
-        item_location_geocode : null,
+      item_location_geocode : null,
+      delivery_location_geocode : null,
     }
+  },
+  componentDidMount : function() {
   },
   handleChange : function(field, event){
     var nextState = {};
@@ -21,7 +27,6 @@ const Get = React.createClass({
   },
   handleSubmit : function(){
     var that = this;
-      this.state.item_location_geocode = document.getElementById('item_location_geocode').value;
 
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
     xmlhttp.open("POST", "/jobs");
@@ -30,8 +35,14 @@ const Get = React.createClass({
 
     browserHistory.push("/courier");
   },
+    updateState: function(key, value) {
+      var nextState = {};
+      nextState[key] = value;
+      this.setState(nextState);
+    },
   render : function(){
-    return (
+      var map = <Map />
+      return (
       <div className="get">
         <h1>Client</h1>
         <p>Instant delivery at your fingertips</p>
@@ -49,20 +60,10 @@ const Get = React.createClass({
           onChange={this.handleChange.bind(this, "item")}
         />
         <p>Item Location</p>
-        <input id="item_location"
-          type="text"
-          value={this.state.item_location}
-          onChange={this.handleChange.bind(this, "item_location")}
-        />
-        <input id="geocode_item_location" type="button" value="Geocode" />
-        <div id="map"></div>
-          <input type="hidden" id="item_location_geocode" />
+          <Map ref={(map) => { this._child = map; }} updateState={this.updateState} position="item_location_geocode" address="item_location" />
+
         <p>Delivery Location</p>
-        <input
-          type="text"
-          value={this.state.delivery_location}
-          onChange={this.handleChange.bind(this, "delivery_location")}
-        />
+          <Map ref={(map) => { this._child = map; }} updateState={this.updateState} position="delivery_location_geocode" address="delivery_location" />
         <p>Time Limit</p>
         <input
           type="text"
