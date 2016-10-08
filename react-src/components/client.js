@@ -4,9 +4,10 @@ import { browserHistory } from 'react-router';
 const Get = React.createClass({
   getInitialState : function(){
     return {
-      name : "",
+      client : "",
       item : "",
-      location : "",
+      item_location : "",
+      delivery_location : "",
       time : "",
       budget : ""
     }
@@ -17,6 +18,16 @@ const Get = React.createClass({
 
     this.setState(nextState);
   },
+  handleSubmit : function(){
+    var that = this;
+
+    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+    xmlhttp.open("POST", "/jobs");
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlhttp.send(JSON.stringify(that.state));
+
+    browserHistory.push("/courier");
+  },
   render : function(){
     return (
       <div className="get">
@@ -26,30 +37,41 @@ const Get = React.createClass({
         <p>Name</p>
         <input
           type="text"
-          onChange={this.handleChange.bind(this, "name")}
+          value={this.state.client}
+          onChange={this.handleChange.bind(this, "client")}
         />
         <p>Item</p>
         <input
           type="text"
+          value={this.state.item}
           onChange={this.handleChange.bind(this, "item")}
         />
-        <p>Location</p>
+        <p>Item Location</p>
         <input
           type="text"
-          onChange={this.handleChange.bind(this, "location")}
+          value={this.state.item_location}
+          onChange={this.handleChange.bind(this, "item_location")}
+        />
+        <p>Delivery Location</p>
+        <input
+          type="text"
+          value={this.state.delivery_location}
+          onChange={this.handleChange.bind(this, "delivery_location")}
         />
         <p>Time Limit</p>
         <input
           type="text"
+          value={this.state.time}
           onChange={this.handleChange.bind(this, "time")}
         />
         <p>Budget</p>
         <input
           type="text"
+          value={this.state.budget}
           onChange={this.handleChange.bind(this, "budget")}
         />
         <br />
-        <button>Submit</button>
+        <button onClick={this.handleSubmit}>Submit</button>
       </div>
     )
   }
