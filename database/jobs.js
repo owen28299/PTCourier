@@ -9,6 +9,7 @@ module.exports = {
       time : 3,
       budget : 50,
       status : "hiring",
+      courier : null,
       applicants : [
         {
           id : 0,

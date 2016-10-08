@@ -42,4 +42,17 @@ router.route('/:id')
     });
   });
 
+router.route('/accept')
+  .post(function(req,res){
+    JobFunctions.acceptApplicant(req.body.jobid, req.body.appid);
+
+    JobFunctions.getAll(function(jobs){
+      res.send({
+        success : true,
+        data : jobs
+      });
+    });
+
+  });
+
 module.exports = router;

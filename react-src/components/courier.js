@@ -25,17 +25,20 @@ const Add = React.createClass({
     var that = this;
 
     var allJobs = this.state.jobs.map(function(element){
-      return (
-        <div key={element.id}>
-          <p>{element.client}</p>
-          <p>{element.item}</p>
-          <p>{element.item_location}</p>
-          <p>{element.delivery_location}</p>
-          <p>{element.time}</p>
-          <p>{element.budget}</p>
-          <button id={element.id} onClick={that.apply}>Apply</button>
-        </div>
-      )
+      if(element.status === "hiring"){
+        return (
+          <div key={element.id}>
+            <p>{element.client}</p>
+            <p>{element.item}</p>
+            <p>{element.item_location}</p>
+            <p>{element.delivery_location}</p>
+            <p>{element.time}</p>
+            <p>{element.budget}</p>
+            <button id={element.id} onClick={that.apply}>Apply</button>
+          </div>
+        )
+      }
+
     });
 
     return (
