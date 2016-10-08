@@ -1,6 +1,8 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 
+const Map  = require('./partials/map');
+
 const PostJob = React.createClass({
   getInitialState : function(){
     return {
@@ -9,7 +11,9 @@ const PostJob = React.createClass({
       item_location : "",
       delivery_location : "",
       time : "",
-      budget : ""
+      budget : "",
+      item_location_geocode : null,
+      delivery_location_geocode : null
     }
   },
   handleChange : function(field, event){
@@ -28,7 +32,13 @@ const PostJob = React.createClass({
 
     browserHistory.push("/courier");
   },
+  updateState: function(key, value) {
+    var nextState = {};
+    nextState[key] = value;
+    this.setState(nextState);
+  },
   render : function(){
+    var map = <Map />
     return (
       <div className="get">
         <h1>Welcome, Mark!</h1>
@@ -46,18 +56,13 @@ const PostJob = React.createClass({
           value={this.state.item}
           onChange={this.handleChange.bind(this, "item")}
         />
+
         <p>Item Location</p>
-        <input
-          type="text"
-          value={this.state.item_location}
-          onChange={this.handleChange.bind(this, "item_location")}
-        />
+        <Map ref={(map) => { this._child = map; }} updateState={this.updateState} position="item_location_geocode" address="item_location" />
+
         <p>Delivery Location</p>
-        <input
-          type="text"
-          value={this.state.delivery_location}
-          onChange={this.handleChange.bind(this, "delivery_location")}
-        />
+        <Map ref={(map) => { this._child = map; }} updateState={this.updateState} position="delivery_location_geocode" address="delivery_location" />
+
         <p>Time Limit</p>
         <input
           type="text"
