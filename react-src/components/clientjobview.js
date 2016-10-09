@@ -2,21 +2,44 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 
 const Progress = React.createClass({
+
     render() {
-        if(this.props.status === 'progress') {
+
+        if (this.props.status === 'progress') {
             return (
                 <div className="status on-time">
                     On-Time | Arriving at 3:15 pm
                 </div>
             )
-        } else if(this.props.status === 'delayed') {
+        } else if (this.props.status === 'delayed') {
             return (
                 <div className="status delayed">
                     Delayed | Waiting for tram 18
                 </div>
             )
+        } else if (this.props.status === 'completed') {
+            return (
+                <div className="status completed">
+                    Completed | Arived on 15/07/2016
+                </div>
+            )
+        } else if (this.props.status === 'hiring') {
+            return (
+                <div className="status hiring">
+                    Taking Bids
+                </div>
+            )
+        } else if (this.props.status === 'hired') {
+            return (
+                <div className="status on-time">
+                    Courier hired | Waiting on response
+                </div>
+            )
+        } else {
+            return (
+                <div className="status"></div>
+            )
         }
-
     }
 });
 
