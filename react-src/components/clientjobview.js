@@ -64,6 +64,7 @@ const ClientJobView = React.createClass({
     render : function(){
         var that = this;
         var myJobs = this.state.jobs.filter(function(element){
+            console.log(element);
             if(element.client === "Mark Smith" && element.status != "completed" && element.status != "hiring" ){
                 return true;
             }

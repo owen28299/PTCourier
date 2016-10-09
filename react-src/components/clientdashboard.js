@@ -174,7 +174,6 @@ const Dashboard = React.createClass({
 
         var allJobs = this.state.jobs.map(function (element) {
             var applicants = element.applicants.map(function (applicant) {
-                console.log(element.courier);
                 return (
                     <div className="app-list" key={applicant.id}>
                         <div className="row">
