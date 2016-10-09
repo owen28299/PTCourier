@@ -9,21 +9,10 @@
 .overlap-map {
   height: 53px;
   margin-top: 0;
-  width: 98%;
+  width: 100%;
   padding-top: 20px;
+  z-index: 999;
+  background-color: white;
+  position: absolute;
 }
 
-//@media(max-width:991px) {
-//  .overlap-map {
-//    position: absolute;
-//    background-color: #fff;
-//    height: 31px;
-//    margin-top: 20px;
-//    width: 98%;
-//    padding-top: 0;
-//  }
-//
-//  .map-iframe {
-//    margin-top: 20px;
-//  }
-//}

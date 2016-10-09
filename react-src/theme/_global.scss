@@ -25,6 +25,14 @@ hr.brand {
   padding:10px 20px;
 }
 
+.container {
+  overflow-x:hidden;
+}
+
+.row {
+  position: relative;
+}
+
 .subnav {
   width:100%;
   padding:10px 0;
@@ -116,6 +124,7 @@ h3.sub-heading {
   }
 
   .list {
+    overflow-x: hidden;
     background-color: white;
     border-top:2px solid #333333;
     padding:10px;
@@ -123,6 +132,7 @@ h3.sub-heading {
     -webkit-box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.3);
     -moz-box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.3);
     box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.3);
+
   }
 
   .app-list {

@@ -45,7 +45,7 @@ const Add = React.createClass({
             + "&mode=TRANSIT%2CWALK&itinIndex=1";
       if(element.status === "hiring"){
         return (
-        <div key={element.id}>
+        <div className="list" key={element.id}>
            <div className="row">
                <div className="col-md-4">
                    <p><b>Name:</b> {element.client}</p>
@@ -78,7 +78,7 @@ const Add = React.createClass({
     return (
       <div className="list-view">
         <h3 className="sub-heading" >currently listed jobs</h3>
-          <div className="list">
+          <div >
                {allJobs.length > 0 ? allJobs : 'No Jobs Listed'}
           </div>
       </div>
