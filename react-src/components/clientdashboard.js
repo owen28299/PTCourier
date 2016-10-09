@@ -2,7 +2,6 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 
 const Progress = React.createClass({
-
     render() {
 
         if (this.props.status === 'progress') {
