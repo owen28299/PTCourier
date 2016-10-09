@@ -7,6 +7,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 import Logo from './partials/images.js';
 
+const Payment = require('./payment');
 const Header = React.createClass({
     renderHeader: function() {
         const path = this.props.location.pathname;
@@ -46,6 +47,8 @@ const Header = React.createClass({
         }
     },
     render : function(){
+        var payment = <Payment />;
+        var hiddenStyle = {display: "none"};
         return (
             <div>
                 <Navbar>
@@ -59,6 +62,12 @@ const Header = React.createClass({
                 {this.renderHeader()}
                 </Navbar>
             {this.props.children}
+                <div style={hiddenStyle}>
+                    <Payment ref={(payment) => {
+                        this._child = payment;
+                    }} />
+                </div>
+
             </div>
         )
     }

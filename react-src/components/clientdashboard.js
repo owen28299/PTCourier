@@ -1,9 +1,8 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
-const Payment = require('./payment');
 
 const Progress = React.createClass({
-    render() {
+    render: function() {
         console.log(this.props.status);
         if (this.props.status === 'progress') {
             return (
@@ -87,9 +86,9 @@ const Dashboard = React.createClass({
                                 console.log("Security code invalid.");
                             }
                         } else if ("request_timeout" == response.status) {
-                            console.log("Session update failed with request timeout: " + response.errors.message);
+                            console.log("Session update failed with request timeout: ");
                         } else if ("system_error" == response.status) {
-                            console.log("Session update failed with system error: " + response.errors.message);
+                            console.log("Session update failed with system error: " );
                         }
                     } else {
                         console.log("Session update failed: " + response);
@@ -162,7 +161,6 @@ const Dashboard = React.createClass({
     },
     render: function () {
         var that = this;
-        var payment = <Payment />;
         var allJobs = this.state.jobs.map(function (element) {
             var courier = function () {
                 return (
@@ -207,7 +205,7 @@ const Dashboard = React.createClass({
                     </div>
                 )
             });
-            var hiddenStyle = {display: "none"};
+
             return (
                 <div className="list" key={element.id}>
                     <div className="arrival-bar">
@@ -227,14 +225,10 @@ const Dashboard = React.createClass({
                         </div>
                     </div>
                     <div>
-                        <p>{element.courier ? element.courier.name + " has been paid " + element.budget.toFixed(2) + " AUD to deliver your product." : applicants}</p>
+                        {element.courier ? element.courier.name + " has been paid " + element.budget.toFixed(2) + " AUD to deliver your product." : applicants}
 
                    </div>
-                    <div style={hiddenStyle}>
-                        <Payment ref={(payment) => {
-                            that._child = payment;
-                        }} />
-                    </div>
+
                 </div>
             )
 
