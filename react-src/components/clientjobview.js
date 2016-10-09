@@ -3,7 +3,6 @@ import { browserHistory } from 'react-router';
 
 const Progress = React.createClass({
     render() {
-        console.log(this.props.status);
         if(this.props.status === 'progress') {
             return (
                 <div className="status on-time">

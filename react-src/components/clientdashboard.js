@@ -4,7 +4,6 @@ const Payment = require('./payment');
 
 const Progress = React.createClass({
     render() {
-        console.log(this.props.status);
         if (this.props.status === 'progress') {
             return (
                 <div className="status on-time">
@@ -28,6 +27,16 @@ const Progress = React.createClass({
                 <div className="status hiring">
                     Taking Bids
                 </div>
+            )
+        } else if (this.props.status === 'hired') {
+            return (
+                <div className="status on-time">
+                    Courier hired | Waiting on response
+                </div>
+            )
+        } else {
+            return (
+                <div className="status"></div>
             )
         }
     }
@@ -164,36 +173,18 @@ const Dashboard = React.createClass({
         var that = this;
         var payment = <Payment />;
         var allJobs = this.state.jobs.map(function (element) {
-            var courier = function () {
-                return (
-                    <div className="app-list">
-                        <div className="row">
-                            <div className="col-md-6">
-                                <p>
-                                    <b>Courier Name: </b>{element.courier.name}</p>
-                            </div>
-                            <div className="col-sm-6">
-                            {element.status != 'completed' ? <button onClick={that.handleChangeView}>View Job Progress</button> : null}
-                            </div>
-                        </div>
-                    </div>
-                )
-            };
             var applicants = element.applicants.map(function (applicant) {
                 return (
                     <div className="app-list" key={applicant.id}>
                         <div className="row">
                             <div className="col-md-3">
-                                <p>
-                                    <b>Applicant Name: </b>{applicant.name}</p>
+                                <p><b>Applicant Name: </b>{applicant.name}</p>
                             </div>
                             <div className="col-md-3">
-                                <p>
-                                    <b>Offer: </b>{applicant.offer.toFixed(2)} AUD</p>
+                                <p><b>Offer: </b>{applicant.offer.toFixed(2)} AUD</p>
                             </div>
                             <div className="col-md-3">
-                                <p>
-                                    <b>Estimated Time: </b>{applicant.time * 60} minutes</p>
+                                <p><b>Estimated Time: </b>{applicant.time * 60} minutes</p>
                             </div>
                             <div className="col-md-3">
                                 <button
@@ -227,7 +218,7 @@ const Dashboard = React.createClass({
                         </div>
                     </div>
                     <div>
-                        <p>{element.courier ? element.courier.name + " has been paid " + element.budget.toFixed(2) + " AUD to deliver your product." : applicants}</p>
+                       {element.courier ? element.courier.name + " has been paid " + element.budget.toFixed(2) + " AUD to deliver your product." : applicants}
 
                    </div>
                     <div style={hiddenStyle}>

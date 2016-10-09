@@ -26,7 +26,7 @@ const JobView = React.createClass({
     var that = this;
 
     var myJobs = this.state.jobs.filter(function(element){
-      if(element.courier && element.courier[0].name === "Jimmy McGrath"){
+      if(element.courier && element.courier.name === "Jimmy McGrath"){
         return true;
       }
       else {
