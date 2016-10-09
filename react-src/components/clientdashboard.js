@@ -182,7 +182,7 @@ const Dashboard = React.createClass({
                             </div>
                             <div className="col-md-3">
                                 <p>
-                                    <b>Offer: </b>${applicant.offer.toFixed(2)}</p>
+                                    <b>Offer: </b>${applicant.offer}</p>
 
                             </div>
                             <div className="col-md-3">
@@ -210,7 +210,7 @@ const Dashboard = React.createClass({
                         <div className="col-md-6">
                             <p><b>Name:</b> {element.client}</p>
                             <p><b>Time Frame:</b> {element.time * 60} minutes </p>
-                            <p><b>Budget:</b> {element.budget.toFixed(2)}</p>
+                            <p><b>Budget:</b> {element.budget}</p>
                         </div>
                         <div className="col-md-6">
                             <p><b>Product:</b> {element.item}</p>
@@ -221,7 +221,7 @@ const Dashboard = React.createClass({
                     </div>
                     <div>
 
-                        {element.courier ? element.courier.name + " has been paid $" + element.budget.toFixed(2) + " to deliver your product." : applicants}
+                        {element.courier ? element.courier.name + " has been paid $" + element.budget + " to deliver your product." : applicants}
                    </div>
 
                 </div>
