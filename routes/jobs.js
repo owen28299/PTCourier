@@ -25,7 +25,7 @@ router.route('/')
     });
   })
   .put(function(req,res){
-    JobFunctions.applyToJob(req.body.id, req.body.courier, req.body.offer, req.body.time);
+    JobFunctions.applyToJob(req.body.id, req.body.name, req.body.offer, req.body.time);
 
     res.send({
       success : true,
