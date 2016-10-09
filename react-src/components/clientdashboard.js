@@ -181,7 +181,9 @@ const Dashboard = React.createClass({
                                 <p><b>Applicant Name: </b>{applicant.name}</p>
                             </div>
                             <div className="col-md-3">
-                                <p><b>Offer: </b>{applicant.offer.toFixed(2)} AUD</p>
+                                <p>
+                                    <b>Offer: </b>${applicant.offer.toFixed(2)}</p>
+
                             </div>
                             <div className="col-md-3">
                                 <p><b>Estimated Time: </b>{applicant.time * 60} minutes</p>
@@ -218,8 +220,7 @@ const Dashboard = React.createClass({
                         </div>
                     </div>
                     <div>
-                       {element.courier ? element.courier.name + " has been paid " + element.budget.toFixed(2) + " AUD to deliver your product." : applicants}
-
+                        {element.courier ? element.courier.name + " has been paid $" + element.budget.toFixed(2) + " to deliver your product." : applicants}
                    </div>
                     <div style={hiddenStyle}>
                         <Payment ref={(payment) => {
