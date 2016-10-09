@@ -221,7 +221,7 @@ const Dashboard = React.createClass({
                         </div>
                     </div>
                     <div>
-                        {element.courier ? element.courier.name ? element.courier.name + " has been paid $" + element.budget.toFixed(2) + " to deliver your product." :element.courier[0].name + " has been paid $" + element.budget.toFixed(2) + " to deliver your product." : applicants}
+                        {element.courier ? element.courier.name ? element.courier.name + " has been paid $" + element.budget + " to deliver your product." :element.courier[0].name + " has been paid $" + element.budget + " to deliver your product." : applicants}
                    </div>
 
                 </div>
