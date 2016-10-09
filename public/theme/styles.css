@@ -5875,6 +5875,12 @@ hr.brand {
   height: auto;
   padding: 10px 20px; }
 
+.container {
+  overflow-x: hidden; }
+
+.row {
+  position: relative; }
+
 .subnav {
   width: 100%;
   padding: 10px 0;

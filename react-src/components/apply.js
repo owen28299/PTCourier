@@ -62,7 +62,7 @@ const Application = React.createClass({
             + element.item_location_geocode.latitude + "%2C" + element.item_location_geocode.longitude
             + "&mode=TRANSIT%2CWALK&itinIndex=1";
       return (
-        <div>
+        <div >
             <div className="row" key={element.id}>
                 <div className="col-md-6">
                     <p>Client : {element.client}</p>
