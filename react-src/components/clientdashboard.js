@@ -172,8 +172,10 @@ const Dashboard = React.createClass({
     },
     render: function () {
         var that = this;
+
         var allJobs = this.state.jobs.map(function (element) {
             var applicants = element.applicants.map(function (applicant) {
+                console.log(element.courier);
                 return (
                     <div className="app-list" key={applicant.id}>
                         <div className="row">
@@ -220,8 +222,7 @@ const Dashboard = React.createClass({
                         </div>
                     </div>
                     <div>
-
-                        {element.courier ? element.courier.name + " has been paid $" + element.budget.toFixed(2) + " to deliver your product." : applicants}
+                        {element.courier ? element.courier.name ? element.courier.name + " has been paid $" + element.budget.toFixed(2) + " to deliver your product." :element.courier[0].name + " has been paid $" + element.budget.toFixed(2) + " to deliver your product." : applicants}
                    </div>
 
                 </div>
