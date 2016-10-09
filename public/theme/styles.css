@@ -5941,6 +5941,7 @@ h3.sub-heading {
   width: 100%; }
 
 .list-view .list {
+  overflow-x: hidden;
   background-color: white;
   border-top: 2px solid #333333;
   padding: 10px;
@@ -6063,5 +6064,8 @@ table > tbody > tr > td {
 .overlap-map {
   height: 53px;
   margin-top: 0;
-  width: 98%;
-  padding-top: 20px; }
+  width: 100%;
+  padding-top: 20px;
+  z-index: 999;
+  background-color: white;
+  position: absolute; }
