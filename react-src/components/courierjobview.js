@@ -36,7 +36,7 @@ const JobView = React.createClass({
 
     var allJobs = myJobs.map(function(element){
       return (
-        <div key={element.id}>
+        <div className="list" key={element.id}>
           <p>{element.client}</p>
           <p>{element.item}</p>
           <p>{element.item_location}</p>
@@ -52,7 +52,7 @@ const JobView = React.createClass({
     return (
       <div className="jobs list-view">
           <h3 className="sub-heading">my jobs</h3>
-          <div className="list">
+          <div>
               {allJobs.length > 0 ? allJobs : 'You have no jobs'}
           </div>
       </div>
