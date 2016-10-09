@@ -67,7 +67,7 @@ const Add = React.createClass({
                     <iframe className="map-iframe" src={courierToItemUrl}></iframe>
                     <h3 className="overlap-map">Getting to the purchaser</h3>
                     <iframe className="map-iframe" src={plannerUrl}></iframe>
-                    <button id={element.id} onClick={that.apply}>Apply</button>
+                    <button className="btn btn-default" id={element.id} onClick={that.apply}>Apply</button>
                 </div>
             </div>
         </div>

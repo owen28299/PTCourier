@@ -62,16 +62,18 @@ const Application = React.createClass({
             + element.item_location_geocode.latitude + "%2C" + element.item_location_geocode.longitude
             + "&mode=TRANSIT%2CWALK&itinIndex=1";
       return (
-        <div className="row" key={element.id}>
-            <div className="col-md-6">
-                <p>Client : {element.client}</p>
-                <p>Item : {element.item}</p>
-                <p>Item Location : {element.item_location}</p>
-            </div>
-            <div className="col-md-6">
-                <p>Delivery Location : {element.delivery_location}</p>
-                <p>Budget : {element.budget}</p>
-                <p>Time Limit (hours) : {element.time}</p>
+        <div>
+            <div className="row" key={element.id}>
+                <div className="col-md-6">
+                    <p>Client : {element.client}</p>
+                    <p>Item : {element.item}</p>
+                    <p>Item Location : {element.item_location}</p>
+                </div>
+                <div className="col-md-6">
+                    <p>Delivery Location : {element.delivery_location}</p>
+                    <p>Budget : {element.budget}</p>
+                    <p>Time Limit (hours) : {element.time}</p>
+                </div>
             </div>
             <div className="row">
                 <h4 className="overlap-map">Getting to the goods</h4>

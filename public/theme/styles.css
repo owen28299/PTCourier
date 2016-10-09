@@ -6061,20 +6061,7 @@ table > tbody > tr > td {
   margin: 0 auto; }
 
 .overlap-map {
-  position: absolute;
-  background-color: #fff;
   height: 53px;
   margin-top: 0;
   width: 98%;
   padding-top: 20px; }
-
-@media (max-width: 991px) {
-  .overlap-map {
-    position: absolute;
-    background-color: #fff;
-    height: 31px;
-    margin-top: 20px;
-    width: 98%;
-    padding-top: 0; }
-  .map-iframe {
-    margin-top: 20px; } }
